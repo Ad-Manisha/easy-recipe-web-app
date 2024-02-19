@@ -3,10 +3,13 @@
 <title>Easy-Recipe-Home</title>
 <style type="text/css">
 body {
-	font-family: Arial, sans-serif;
-	background-color: #f4f4f4;
+	width: 100%;
+	height:100%;
 	margin: 0;
 	padding: 0;
+	overflow-x:hidden;
+	background-color: #e6edf7;
+	font-family: Arial, sans-serif;
 }
 
 header {
@@ -96,6 +99,39 @@ main {
 	transition: background-color 0.3s ease-in-out;
 	text-align: left;
 }
+.section{
+	color: black;
+	position: absolute;
+	top: 910px;
+	left: 580;
+	line-height: 0.5;
+
+}
+.copyright{
+	color: white;
+	position: absolute;
+	top: 1100px;
+	line-height: 1.5;
+	background-color:#6f7070;
+	display: block;
+	width:100%;
+	left:0;
+	text-align:center;
+
+}
+p{
+	color: black;
+	font-size:1rem;
+	
+
+}
+h2{
+	font-size: 0.75rem bold;
+	margin-bottom: 0.75rem;
+	color: black;
+	text-align: center;
+
+}
 
 </style>
 </head>
@@ -107,8 +143,9 @@ main {
 			<h1>Easy Recipe</h1>
 		</div>
 		<nav>
-			<a href="#">Home</a> <a href="RecipeList">Recipes</a> <a href="#">About</a>
-			<a href="#">Contact</a>
+			<a href="RecipeList">Recipes</a> 
+			<a href="#about">About</a>
+			<a href="#contact">Contact</a>
 		</nav>
 	</header>
 
@@ -123,6 +160,26 @@ main {
 		</div>
 
 	</main>
+	<footer>
+	<div class="section">
+		<section id="contact">
+	        <h2>Contact Us</h2>
+	        <p>Email: easyrecipe@example.com</p>
+	        <p>Phone: 9857666433</p>
+    	</section>
+    
+    	<section id="about">
+	        <h2>About Us</h2>
+	        
+	        <p>This is our About section. We are...</p>
+    	</section>
+	
+	</div>
+	
+    
+    <div class="copyright">&copy; 2024 EasyRecipe. All rights reserved.</div>
+        
+    </footer>
 
 </body>
 </html>

@@ -49,7 +49,7 @@ public class RecipeDao {
 
 		return list;
 	}
-
+// get single recipe
 	public Recipe getRecipe(int id) {
 
 		Connection con = ConnectionFactory.getConnection();
@@ -84,27 +84,32 @@ public class RecipeDao {
 		return recipe;
 	}
 
-	public Recipe searchRecipe(String recipe_name) {
-
+	
+	// search recipe
+	public List<Recipe> searchRecipes( ) {
+		
+		List<Recipe> list = new ArrayList<Recipe>();
+		
 		Connection con = ConnectionFactory.getConnection();
-		String sql = "select * from Recipes where recipe_name like '%name%'";
-
-		Recipe recipe = null;
+		
+		String sql = "SELECT * FROM Recipes WHERE recipe_name like '%recipeName%'";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, recipe_name);//////
+			
 			ResultSet rs = ps.executeQuery();
-			if (rs.next()) {
+			
+			while (rs.next()) {
 
-				int id = rs.getInt("recipe_id");
-				String name = rs.getString("recipe_name");
-				String url = rs.getString("recipe_imageurl");
-				String description = rs.getString("recipe_description");
-				String time = rs.getString("recipe_time");
-				String category = rs.getString("recipe_category");
+				Integer id = rs.getInt(1);
+				String name = rs.getString(2);
+				String image = rs.getString(3);
+				String description = rs.getString(4);
+				String time = rs.getString(5);
+				String category = rs.getString(6);
 
-				recipe = new Recipe(id, name, url, description, time, category);
+				Recipe recipe = new Recipe(id, name, image, description, time, category);
+				list.add(recipe);
 			}
 			ps.close();
 			rs.close();
@@ -116,7 +121,7 @@ public class RecipeDao {
 			exception.printStackTrace();
 			System.out.println("Error - Recipe Fetching Operation Failed !");
 		}
-		return recipe;
+		return list;
 	}
 
 	// add a recipe

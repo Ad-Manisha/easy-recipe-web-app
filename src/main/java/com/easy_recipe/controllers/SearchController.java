@@ -1,6 +1,7 @@
 package com.easy_recipe.controllers;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,10 +26,14 @@ public class SearchController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String name = request.getParameter("recipe_name");
-		Recipe r = dao.searchRecipe(name);
-
-		request.setAttribute("search", r);
+		System.out.println("SearchController called.");
+		List<Recipe> recipes = dao.searchRecipes();
+		
+		for (Recipe r : recipes) {
+			System.out.println(r);
+		}
+		
+		request.setAttribute("search", recipes);
 		RequestDispatcher rd = request.getRequestDispatcher("search.jsp");
 		rd.forward(request, response);
 	}
