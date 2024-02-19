@@ -29,6 +29,16 @@ public class Recipe {
 		this.recipeCategory = recipeCategory;
 	}
 
+	public Recipe(String recipeName, String imageUrl, String recipeDescription, String recipeTime,
+			String recipeCategory) {
+
+		this.recipeName = recipeName;
+		this.imageUrl = imageUrl;
+		this.recipeDescription = recipeDescription;
+		this.recipeTime = recipeTime;
+		this.recipeCategory = recipeCategory;
+	}
+
 	public int getRecipeId() {
 		return recipeId;
 	}

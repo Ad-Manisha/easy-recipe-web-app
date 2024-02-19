@@ -8,11 +8,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-body {
+body{
 	margin: 0;
 	padding: 0;
 }
-
 .main-body {
 	display: flex;
 	flex-wrap: wrap;
@@ -60,6 +59,7 @@ body {
 	transition: box-shadow 0.3s;
 	width: 300px;
 	background-color: #fff;
+	
 }
 
 .card:hover {
@@ -105,21 +105,21 @@ p {
 <body>
 
 	<div class="search-container">
-		<form action="/search" method="GET">
-			<input type="text" class="search-input" placeholder="Search..."
-				name="recipe_name"> <input type="submit"
-				class="search-button" />
+		<form action="/search">
+			<input type="text" class="search-input" placeholder="Search..." name="recipe_name">
+			<input type="submit" class="search-button"/>
 		</form>
 
 	</div>
 
 	<div class="main-body">
-		<c:forEach items="${recipeList}" var="recipe">
+		
 			<div class="card">
-				<a href="recipes?id=<c:out value='${recipe.recipeId}'/>"> <img
-					src="<c:out value="${recipe.imageUrl}"/>" />
-				</a>
-
+			<a href="recipes?id=<c:out value='${recipe.recipeId}'/>">
+			
+				<img src="<c:out value="${recipe.imageUrl}"/>" />
+			</a>
+				
 				<div class="card-content">
 					<h5 class="card-title">
 						<c:out value="${recipe.recipeName}" />
@@ -129,7 +129,7 @@ p {
 					</p>
 				</div>
 			</div>
-		</c:forEach>
+		
 
 	</div>
 

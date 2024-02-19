@@ -84,4 +84,76 @@ public class RecipeDao {
 		return recipe;
 	}
 
+	public Recipe searchRecipe(String recipe_name) {
+
+		Connection con = ConnectionFactory.getConnection();
+		String sql = "select * from Recipes where recipe_name like '%name%'";
+
+		Recipe recipe = null;
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, recipe_name);//////
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+
+				int id = rs.getInt("recipe_id");
+				String name = rs.getString("recipe_name");
+				String url = rs.getString("recipe_imageurl");
+				String description = rs.getString("recipe_description");
+				String time = rs.getString("recipe_time");
+				String category = rs.getString("recipe_category");
+
+				recipe = new Recipe(id, name, url, description, time, category);
+			}
+			ps.close();
+			rs.close();
+			con.close();
+
+			System.out.println("Database Disconnected !");
+
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			System.out.println("Error - Recipe Fetching Operation Failed !");
+		}
+		return recipe;
+	}
+
+	// add a recipe
+
+	public static int addRecipe(Recipe recipe) {
+		Connection con = ConnectionFactory.getConnection();
+
+		String sql = "INSERT INTO Recipes VALUES (NULL,?,?,?,?,?)";
+
+		int result = 0;
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, recipe.getRecipeName());
+			ps.setString(2, recipe.getImageUrl());
+			ps.setString(3, recipe.getRecipeDescription());
+			ps.setString(4, recipe.getRecipeTime());
+			ps.setString(5, recipe.getRecipeCategory());
+
+			result = ps.executeUpdate(); // no.of rows affected
+
+			ps.close();
+			con.close();
+			System.out.println("Database Disconnected!");
+
+			if (result == 1) {
+				System.out.println("INFO - 1 recipe Inserted Successfully!");
+			}
+
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			System.out.println("ERR - recipe Insertion Failed!");
+		}
+		return result;
+
+	}
+
+	
+
 }

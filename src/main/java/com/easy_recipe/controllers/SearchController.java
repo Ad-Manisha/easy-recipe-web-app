@@ -11,23 +11,26 @@ import javax.servlet.http.HttpServletResponse;
 import com.easy_recipe.dao.RecipeDao;
 import com.easy_recipe.models.Recipe;
 
-public class SingleRecipeController extends HttpServlet {
+public class SearchController extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
+
 	RecipeDao dao = null;
 
-	public SingleRecipeController() {
+	public SearchController() {
 		dao = new RecipeDao();
+
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String id = request.getParameter("id");
-		Recipe r = dao.getRecipe(Integer.parseInt(id));
 
-		request.setAttribute("recipe", r);
-		RequestDispatcher rd = request.getRequestDispatcher("recipe.jsp");
+		String name = request.getParameter("recipe_name");
+		Recipe r = dao.searchRecipe(name);
+
+		request.setAttribute("search", r);
+		RequestDispatcher rd = request.getRequestDispatcher("search.jsp");
 		rd.forward(request, response);
-
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

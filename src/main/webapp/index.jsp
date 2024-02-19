@@ -65,8 +65,8 @@ main {
 .content{
 	width:100%;
 	position: relative;
-	top: 180px;
-	left: 200;
+	top: 220px;
+	left: 350;
 	line-height: 1;
 	
 }
@@ -80,7 +80,7 @@ main {
 
 .btn {
 	width: 300px;
-	margin: 260px auto;
+	margin: 320px auto;
 }
 
 .my-btn {
@@ -115,9 +115,7 @@ main {
 	<main>
 		<div class="wrapper">
 			<div class="content">
-				<h1 class="my-head">The Easiest Way </h1>
-				<h1 class="my-head">To Make Your </h1>
-				<h1 class="my-head">Favorite Meal... </h1>
+				<h1 class="my-head">The Easiest Way To Make Your Favorite Meal...</h1>
 			</div>
 			<div class="btn">
 				<a href="RecipeList" class="my-btn">Explore Recipes...</a>
