@@ -1,0 +1,35 @@
+Users
+-------
+user_id int PK
+username string
+password string
+
+
+
+
+Recipes
+--------
+recipe_id int PK
+recipe_name varchar
+recipe_imageUrl varchar
+recipe_description varchar
+recipe_time varchar
+category varchar 
+
+
+
+Ingredients
+-----------
+ingredient_id int PK     1
+ingredient_qty           2
+ingredient_amount        spoon
+ingredient_name          sugar    
+recipe_id FK             10
+
+
+
+Comments
+----------
+comment_id
+comment string
+user_id FK

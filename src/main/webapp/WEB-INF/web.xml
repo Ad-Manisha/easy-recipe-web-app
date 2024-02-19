@@ -1,0 +1,32 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>RecipeListController</servlet-name>
+  	<display-name>RecipeListController</display-name>
+  	<description></description>
+  	<servlet-class>com.easy_recipe.controllers.RecipeListController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>SingleRecipeController</servlet-name>
+  	<display-name>SingleRecipeController</display-name>
+  	<description></description>
+  	<servlet-class>com.easy_recipe.controllers.SingleRecipeController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>RecipeListController</servlet-name>
+  	<url-pattern>/RecipeList</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SingleRecipeController</servlet-name>
+  	<url-pattern>/recipes</url-pattern>
+  </servlet-mapping>
+  
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/error.jsp</location>
+  </error-page>
+</web-app>
