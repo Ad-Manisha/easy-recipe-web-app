@@ -1,21 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="ISO-8859-1">
+<title>New Contact</title>
 <style>
 body {
-	margin: 0;
-	padding: 0;
-}
-
-.main-body {
-	display: flex;
-	flex-wrap: wrap;
 	font-family: Arial, sans-serif;
 	background-color: #f4f4f4;
 	margin: 0;
@@ -29,6 +21,11 @@ header {
 	padding: 20px;
 	background-color: tomato;
 	color: #fff;
+}
+
+.my-div {
+	height: 550px;
+	width: 350px;
 }
 
 .logo {
@@ -59,48 +56,60 @@ nav a:hover, .my-btn:hover {
 	color: #20353b;
 }
 
-.card {
-	border: 1px solid #ddd;
-	border-radius: 8px;
-	margin: 20px;
-	overflow: hidden;
-	transition: box-shadow 0.3s;
-	width: 300px;
-	background-color: #fff;
-}
-
-.card:hover {
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.card img {
-	width: 100%;
-	height: 200px;
-	object-fit: cover;
-}
-
-.card-content {
-	padding: 15px;
-}
-
-.card-title {
-	font-size: 1.25rem;
-	margin-bottom: 0.75rem;
-}
-
-.card-text {
-	color: #666;
+.my-div label {
+	font-size: 14px bold;
+	padding: 10px;
+	color: black;
+	margin-bottom: 6px;
+	dispplay: inline-block;
 	text-align: left;
 }
 
-p {
-	text-align: right;
+label, input {
+	display: block;
+	margin-left: 9px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.search-input {
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px 0 0 4px;
+	font-size: 16px;
+	width: 500px;
+}
+
+.submit-button {
+	width: 30%;
+	background-color: #f55e07;
+	color: #fff;
+	padding: 10px 15px;
+	border: 1px solid #f55e07;
+	border-radius: 0 4px 4px 0;
+	cursor: pointer;
+	font-size: 14px;
+	margin-left: 350px;
+	margin-bottom: 70px;
+}
+
+.submit-button:hover {
+	background-color: green;
+	border-color: #035922;
+}
+
+#my-head {
+	margin-left: 150px;
+}
+
+#desc {
+	margin-left: 10px;
 }
 </style>
-<title>Recipe List</title>
 </head>
 <body>
-
 	<header>
 		<div class="logo">
 			<img alt="Easy-Recipe Logo"
@@ -108,31 +117,70 @@ p {
 			<h1>Easy Recipe</h1>
 		</div>
 		<nav>
-			<a href="./index.jsp">Home</a> <a href="./addRecipe.jsp">Add
-				Recipe</a>
+			<a href="./index.jsp">Home</a> <a href="RecipeList">Recipes</a>
 		</nav>
 	</header>
 
+	<center>
+		<%
+		Object msg = request.getAttribute("message");
+		if (msg != null) {
+			out.println(msg.toString());
+		}
+		%>
 
-	<div class="main-body">
-		<c:forEach items="${search}" var="recipe">
-			<div class="card">
-				<a href="search?recipeId=<c:out value='${recipe.recipeId}'/>"> <img
-					src="<c:out value="${recipe.imageUrl}"/>" />
-				</a>
+		<h1 id="my-head">Update Recipe</h1>
 
-				<div class="card-content">
-					<h5 class="card-title">
-						<c:out value="${recipe.recipeName}" />
-					</h5>
-					<p class="card-text">
-						<c:out value="${recipe.recipeDescription}" />
-					</p>
+		<div class="my-div">
+			<br>
+			<form action="update" method="post">
+
+				<div>
+					<label>Recipe Id :</label> <input type="number" name="recipeId"
+						class="search-input"
+						value="<c:out value='${recipe.recipeId}'></c:out>"
+						readonly="readonly">
 				</div>
-			</div>
-		</c:forEach>
+				<div>
+					<label>Recipe Name :</label> <input type="text" name="recipeName"
+						class="search-input"
+						value="<c:out value='${recipe.recipeName}'></c:out>">
+				</div>
+				<br>
+				<div>
+					<label>Image Url :</label> <input type="text" name="imageUrl"
+						class="search-input"
+						value="<c:out value='${recipe.imageUrl}'></c:out>">
+				</div>
+				<br>
 
-	</div>
+				<div>
+					<label>Description :</label>
+
+					<textarea rows="3" cols="6" name="recipeDescription"
+						class="search-input" id="desc"><c:out
+							value='${recipe.recipeDescription}'></c:out></textarea>
+				</div>
+				<br>
+
+				<div>
+					<label>Time :</label> <input type="text" name="recipeTime"
+						class="search-input"
+						value="<c:out value='${recipe.recipeTime}'></c:out>">
+				</div>
+				<br>
+
+				<div>
+					<label>Recipe Category :</label> <input type="text"
+						name="recipeCategory" class="search-input"
+						value="<c:out value='${recipe.recipeCategory}'></c:out>">
+				</div>
+				<br> <br>
+				<button type="submit" class="submit-button">Update</button>
+			</form>
+
+		</div>
+	</center>
 
 </body>
 </html>

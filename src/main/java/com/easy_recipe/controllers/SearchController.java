@@ -28,11 +28,11 @@ public class SearchController extends HttpServlet {
 
 		System.out.println("SearchController called.");
 		List<Recipe> recipes = dao.searchRecipes();
-		
+
 		for (Recipe r : recipes) {
 			System.out.println(r);
 		}
-		
+
 		request.setAttribute("search", recipes);
 		RequestDispatcher rd = request.getRequestDispatcher("search.jsp");
 		rd.forward(request, response);

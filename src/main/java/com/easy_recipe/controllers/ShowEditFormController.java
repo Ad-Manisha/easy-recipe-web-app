@@ -1,7 +1,6 @@
 package com.easy_recipe.controllers;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,28 +11,24 @@ import javax.servlet.http.HttpServletResponse;
 import com.easy_recipe.dao.RecipeDao;
 import com.easy_recipe.models.Recipe;
 
-public class RecipeListController extends HttpServlet {
+public class ShowEditFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	RecipeDao recipeDao = null;
+	private RecipeDao recipeDao = null;
 
-	public RecipeListController() {
+	public ShowEditFormController() {
 		recipeDao = new RecipeDao();
-
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		Integer id = Integer.parseInt(request.getParameter("id"));
+		Recipe recipe = recipeDao.getRecipe(id);
+		System.out.println("***************************");
+		System.out.println(recipe);
 
-		System.out.println("RecipeListController called.");
-		List<Recipe> recipes = recipeDao.getAllRecipes();
-
-		for (Recipe r : recipes) {
-			System.out.println(r);
-		}
-
-		request.setAttribute("recipeList", recipes);
-		RequestDispatcher rd = request.getRequestDispatcher("recipe-list.jsp");
+		request.setAttribute("recipe", recipe);
+		RequestDispatcher rd = request.getRequestDispatcher("editRecipe.jsp");
 		rd.forward(request, response);
 	}
 
@@ -41,5 +36,4 @@ public class RecipeListController extends HttpServlet {
 			throws ServletException, IOException {
 
 	}
-
 }

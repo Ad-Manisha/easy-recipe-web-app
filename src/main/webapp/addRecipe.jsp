@@ -6,18 +6,14 @@
 <meta charset="ISO-8859-1">
 <title>New Contact</title>
 <style>
-
-
 body {
 	font-family: Arial, sans-serif;
-	background-color:fff ;
-	margin: 0 px;
+	background-color: #f4f4f4;
+	margin: 0;
 	padding: 0;
-	height: 100vh;
 }
 
-
-	header {
+header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -25,20 +21,11 @@ body {
 	background-color: tomato;
 	color: #fff;
 }
+
 .my-div {
-	
-	height: 500px;
-	border: 1px groove tomato;
-	border-radius:8px;
-	margin: 25px;
-	overflow: hidden;
-	transition: box-shadow 0.3s;
+	height: 550px;
 	width: 350px;
-	background-color:#dce6e6 ;
-	margin-bottom: 0.75rem;
 }
-
-
 
 .logo {
 	display: flex;
@@ -68,26 +55,60 @@ nav a:hover, .my-btn:hover {
 	color: #20353b;
 }
 
-.my-div label{
-	
-	font-size: 6px bold;
-	padding: 15px;
-	color: b;ack;
-	dispplay:inline-block;
+.my-div label {
+	font-size: 14px bold;
+	padding: 10px;
+	color: black;
+	margin-bottom: 6px;
+	dispplay: inline-block;
 	text-align: left;
 }
-#submit{
-	height:40px;
-	width: 100px;
-	background-color:green;
-	color: white;
-	border-radius:2px;
 
+label, input {
+	display: block;
+	margin-left: 9px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.search-input {
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px 0 0 4px;
+	font-size: 16px;
+	width: 500px;
+}
+
+.submit-button {
+	width: 30%;
+	background-color: #f55e07;
+	color: #fff;
+	padding: 10px 15px;
+	border: 1px solid #f55e07;
+	border-radius: 0 4px 4px 0;
+	cursor: pointer;
+	font-size: 14px;
+	margin-left: 350px;
+	margin-bottom: 70px;
+}
+
+.submit-button:hover {
+	background-color: green;
+	border-color: #035922;
+}
+
+#my-head {
+	margin-left: 150px;
+}
+
+#desc {
+	margin-left: 10px;
 }
 </style>
 </head>
 <body>
-
 	<header>
 		<div class="logo">
 			<img alt="Easy-Recipe Logo"
@@ -95,11 +116,10 @@ nav a:hover, .my-btn:hover {
 			<h1>Easy Recipe</h1>
 		</div>
 		<nav>
-			<a href="./index.jsp">Home</a> 
-			<a href="RecipeList">Recipes</a> 
+			<a href="./index.jsp">Home</a> <a href="RecipeList">Recipes</a>
 		</nav>
 	</header>
-	
+
 	<center>
 		<%
 		Object msg = request.getAttribute("message");
@@ -107,41 +127,45 @@ nav a:hover, .my-btn:hover {
 			out.println(msg.toString());
 		}
 		%>
-		
-		<h1>Create New Recipe</h1>
-		
-		
+
+		<h1 id="my-head">Create New Recipe</h1>
+
+
 		<div class="my-div">
-		<br>
+			<br>
 			<form action="addRecipe" method="post">
 				<div>
-					<label>Recipe Name</label> <input type="text" name="recipeName">
+					<label>Recipe Name :</label> <input type="text" name="recipeName"
+						class="search-input">
 				</div>
 				<br>
 				<div>
-					<label>Image Url</label> <input type="text" name="imageUrl">
-				</div>
-				<br>
-
-				<div>
-					<label>Description</label>
-					<textarea rows="5" cols="18" name="recipeDescription"></textarea>
+					<label>Image Url :</label> <input type="text" name="imageUrl"
+						class="search-input">
 				</div>
 				<br>
 
 				<div>
-					<label>Time</label> <input type="text" name="recipeTime">
+					<label>Description :</label>
+					<textarea rows="3" cols="6" name="recipeDescription"
+						class="search-input" id="desc"></textarea>
 				</div>
 				<br>
 
 				<div>
-					<label>Category</label> <select name="recipeCategory">
-						<option>Veg</option>
-						<option>Non-Veg</option>
+					<label>Time :</label> <input type="text" name="recipeTime"
+						class="search-input">
+				</div>
+				<br>
+
+				<div>
+					<label>Category:</label> <select name="recipeCategory">
+						<option value="1">Veg</option>
+						<option value="2">Non-Veg</option>
 					</select>
 				</div>
 				<br> <br>
-				<button type="submit" id="submit">Add Recipe</button>
+				<button type="submit" class="submit-button">Add Recipe</button>
 			</form>
 
 		</div>

@@ -96,6 +96,7 @@ nav a:hover, .my-btn:hover {
 	overflow: hidden;
 	transition: box-shadow 0.3s;
 	width: 300px;
+	height: 400px;
 	background-color: #fff;
 }
 
@@ -138,8 +139,9 @@ p {
 			<h1>Easy Recipe</h1>
 		</div>
 		<nav>
-			<a href="./index.jsp">Home</a> <a href="./addRecipe.jsp">Add
-				Recipe</a>
+			<a href="./index.jsp">Home</a> <a href="adminRec-list">Modify</a> <a
+				href="">Feedback</a>
+
 		</nav>
 	</header>
 

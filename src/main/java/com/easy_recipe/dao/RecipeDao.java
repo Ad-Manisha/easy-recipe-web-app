@@ -49,25 +49,26 @@ public class RecipeDao {
 
 		return list;
 	}
+
 // get single recipe
-	public Recipe getRecipe(int id) {
+	public Recipe getRecipe(Integer id) {
 
 		Connection con = ConnectionFactory.getConnection();
-		String sql = "select  * from Recipes where recipe_id = ?";
-
+		String sql = "SELECT * FROM Recipes WHERE recipe_id = ?";
 		Recipe recipe = null;
+
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 
-				int recipe_id = rs.getInt("recipe_id");
-				String name = rs.getString("recipe_name");
-				String url = rs.getString("recipe_imageurl");
-				String description = rs.getString("recipe_description");
-				String time = rs.getString("recipe_time");
-				String category = rs.getString("recipe_category");
+				Integer recipe_id = rs.getInt(1);
+				String name = rs.getString(2);
+				String url = rs.getString(3);
+				String description = rs.getString(4);
+				String time = rs.getString(5);
+				String category = rs.getString(6);
 
 				recipe = new Recipe(recipe_id, name, url, description, time, category);
 			}
@@ -84,21 +85,20 @@ public class RecipeDao {
 		return recipe;
 	}
 
-	
 	// search recipe
-	public List<Recipe> searchRecipes( ) {
-		
+	public List<Recipe> searchRecipes() {
+
 		List<Recipe> list = new ArrayList<Recipe>();
-		
+
 		Connection con = ConnectionFactory.getConnection();
-		
+
 		String sql = "SELECT * FROM Recipes WHERE recipe_name like '%recipeName%'";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			
+
 			ResultSet rs = ps.executeQuery();
-			
+
 			while (rs.next()) {
 
 				Integer id = rs.getInt(1);
@@ -159,6 +159,56 @@ public class RecipeDao {
 
 	}
 
-	
+	// update a recipe
+	public int updateRecipe(Recipe recipe) {
+		Connection con = ConnectionFactory.getConnection();
+		String sql = "UPDATE Recipes SET recipe_name=?,recipe_imageurl=?,recipe_description=?,recipe_time =?,recipe_category=? WHERE recipe_id = ?";
+
+		int result = 0;
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, recipe.getRecipeName());
+			ps.setString(2, recipe.getImageUrl());
+			ps.setString(3, recipe.getRecipeDescription());
+			ps.setString(4, recipe.getRecipeTime());
+			ps.setString(5, recipe.getRecipeCategory());
+			ps.setInt(6, recipe.getRecipeId());
+
+			result = ps.executeUpdate();
+			ps.close();
+			con.close();
+			System.out.println("Database Disconnected!");
+			if (result == 1) {
+				System.out.println("INFO - 1 Recipe Updated Successfully!");
+			}
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			System.out.println("ERR - Recipe Updation Failed!");
+		}
+		return result;
+	}
+
+	// delete a recipe
+	public int deleteRecipe(Integer id) {
+		Connection con = ConnectionFactory.getConnection();
+		String sql = "DELETE FROM Recipes WHERE recipe_id=?";
+
+		int result = 0;
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			result = ps.executeUpdate();
+			ps.close();
+			con.close();
+			System.out.println("Database Disconnected!");
+			if (result == 1) {
+				System.out.println("INFO - 1 Recipe Deleted Successfully!");
+			}
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			System.out.println("ERR - Recipe Deletion Failed!");
+		}
+		return result;
+	}
 
 }

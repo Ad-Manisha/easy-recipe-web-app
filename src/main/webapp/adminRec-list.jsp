@@ -7,6 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+	integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<title>Admin-Recipe-list</title>
+</head>
 <style>
 body {
 	margin: 0;
@@ -59,6 +65,36 @@ nav a:hover, .my-btn:hover {
 	color: #20353b;
 }
 
+.search-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #f4f4f4;
+	height: 10vh;
+}
+
+.search-input {
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px 0 0 4px;
+	font-size: 16px;
+}
+
+.search-button {
+	background-color: tomato;
+	color: #fff;
+	padding: 10px 15px;
+	border: 1px solid tomato;
+	border-radius: 0 4px 4px 0;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.search-button:hover {
+	background-color: #f55e07;
+	border-color: #bf2b0b;
+}
+
 .card {
 	border: 1px solid #ddd;
 	border-radius: 8px;
@@ -66,6 +102,7 @@ nav a:hover, .my-btn:hover {
 	overflow: hidden;
 	transition: box-shadow 0.3s;
 	width: 300px;
+	height: 400px;
 	background-color: #fff;
 }
 
@@ -96,8 +133,20 @@ nav a:hover, .my-btn:hover {
 p {
 	text-align: right;
 }
+
+#edit, #delete {
+	text-decoration: none;
+	color: #2e4578;
+	margin: 58px;
+	font-weight: bold;
+	transition: color 0.3s ease-in-out;
+}
+
+#edit:hover, #delete:hover {
+	color: #5b79bd;
+}
 </style>
-<title>Recipe List</title>
+<title>Admin-Recipe List</title>
 </head>
 <body>
 
@@ -109,15 +158,23 @@ p {
 		</div>
 		<nav>
 			<a href="./index.jsp">Home</a> <a href="./addRecipe.jsp">Add
-				Recipe</a>
+				Recipe</a> <a href="">Modify</a> <a href="">Feedback</a>
+
 		</nav>
 	</header>
 
+	<div class="search-container">
+		<form action="search" method="GET">
+			<input type="text" class="search-input" placeholder="Search..."
+				name="recipeName"> <input type="submit"
+				class="search-button" />
+		</form>
+	</div>
 
 	<div class="main-body">
-		<c:forEach items="${search}" var="recipe">
+		<c:forEach items="${recipeList}" var="recipe">
 			<div class="card">
-				<a href="search?recipeId=<c:out value='${recipe.recipeId}'/>"> <img
+				<a href="recipes?id=<c:out value='${recipe.recipeId}'/>"> <img
 					src="<c:out value="${recipe.imageUrl}"/>" />
 				</a>
 
@@ -129,6 +186,10 @@ p {
 						<c:out value="${recipe.recipeDescription}" />
 					</p>
 				</div>
+				<a href="edit?id=<c:out value='${recipe.recipeId}'/>" id="edit"><i
+					class="fas fa-edit fa-lg" aria-hidden="true"></i></a> <a
+					href="delete?id=<c:out value='${recipe.recipeId}'/>" id="delete"><i
+					class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
 			</div>
 		</c:forEach>
 

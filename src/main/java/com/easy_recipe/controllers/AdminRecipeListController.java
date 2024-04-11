@@ -12,34 +12,28 @@ import javax.servlet.http.HttpServletResponse;
 import com.easy_recipe.dao.RecipeDao;
 import com.easy_recipe.models.Recipe;
 
-public class RecipeListController extends HttpServlet {
+public class AdminRecipeListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	RecipeDao recipeDao = null;
+	RecipeDao rDao = null;
 
-	public RecipeListController() {
-		recipeDao = new RecipeDao();
-
+	public AdminRecipeListController() {
+		rDao = new RecipeDao();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		System.out.println("RecipeListController called.");
-		List<Recipe> recipes = recipeDao.getAllRecipes();
+		System.out.println("AdminRecipeListController called.");
+		List<Recipe> recipes = rDao.getAllRecipes();
 
 		for (Recipe r : recipes) {
 			System.out.println(r);
 		}
 
 		request.setAttribute("recipeList", recipes);
-		RequestDispatcher rd = request.getRequestDispatcher("recipe-list.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/adminRec-list.jsp");
 		rd.forward(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
 	}
 
 }
