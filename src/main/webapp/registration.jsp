@@ -1,21 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+	integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<title>Registration</title>
 <style>
 body {
-	margin: 0;
-	padding: 0;
-}
-
-.main-body {
-	display: flex;
-	flex-wrap: wrap;
 	font-family: Arial, sans-serif;
 	background-color: #f4f4f4;
 	margin: 0;
@@ -29,6 +25,27 @@ header {
 	padding: 20px;
 	background-color: tomato;
 	color: #fff;
+}
+
+.top{
+	display: flex;
+	align-items: center;
+}
+
+#back{
+	margin-top: 30px;
+	margin-left: 80px;
+	color: #2e4578;
+	font-weight: bold;
+	transition: color 0.3s ease-in-out;
+}
+#back:hover {
+	color: #5b79bd;
+}
+
+.my-div {
+	height: 550px;
+	width: 350px;
 }
 
 .logo {
@@ -59,79 +76,65 @@ nav a:hover, .my-btn:hover {
 	color: #20353b;
 }
 
-.search-container {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: #f4f4f4;
-	height: 10vh;
-}
-
-.search-input {
+.my-div label {
+	font-size: 14px bold;
 	padding: 10px;
-	border: 1px solid #ccc;
-	border-radius: 4px 0 0 4px;
-	font-size: 16px;
-}
-
-.search-button {
-	background-color: tomato;
-	color: #fff;
-	padding: 10px 15px;
-	border: 1px solid tomato;
-	border-radius: 0 4px 4px 0;
-	cursor: pointer;
-	font-size: 16px;
-}
-
-.search-button:hover {
-	background-color: #f55e07;
-	border-color: #bf2b0b;
-}
-
-.card {
-	border: 1px solid #ddd;
-	border-radius: 8px;
-	margin: 20px;
-	overflow: hidden;
-	transition: box-shadow 0.3s;
-	width: 313px;
-	height: 400px;
-	background-color: #fff;
-}
-
-.card:hover {
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.card img {
-	width: 100%;
-	height: 200px;
-	object-fit: cover;
-}
-
-.card-content {
-	padding: 15px;
-}
-
-.card-title {
-	font-size: 1.25rem;
-	margin-bottom: 0.75rem;
-}
-
-.card-text {
-	color: #666;
+	margin-bottom: 6px;
+	dispplay: inline-block;
 	text-align: left;
 }
 
-p {
-	text-align: right;
+label, input {
+	display: block;
+	margin-left: 9px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.search-input {
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px 0 0 4px;
+	font-size: 16px;
+	width: 400px;
+}
+
+.submit-button {
+	width: 30%;
+	background-color: #f55e07;
+	color: #fff;
+	padding: 10px 15px;
+	border: 1px solid #f55e07;
+	border-radius: 0 4px 4px 0;
+	cursor: pointer;
+	font-size: 14px;
+	margin-left: 330px;
+	margin-bottom: 70px;
+}
+
+.submit-button:hover {
+	background-color: green;
+	border-color: #035922;
+}
+
+#my-head {
+	margin-left: 115px;
+	color: #2e4578;
+}
+
+#desc {
+	margin-left: 10px;
+}
+#user,#email,#pwd1,#pwd2,#contact{
+	color: #2e4578;
+	font-weight: bold;
+	transition: color 0.3s ease-in-out;
 }
 </style>
-<title>Recipe List</title>
 </head>
 <body>
-
 	<header>
 		<div class="logo">
 			<img alt="Easy-Recipe Logo"
@@ -139,40 +142,63 @@ p {
 			<h1>Easy Recipe</h1>
 		</div>
 		<nav>
-			<a href="./index.jsp">Home</a> <a href="./adminLogin.jsp">Modify</a> <a
-				href="./userLogin.jsp">Feedback</a>
-
+			<a href="./index.jsp">Home</a> <a href="RecipeList">Recipes</a>
 		</nav>
 	</header>
 
-	<div class="search-container">
-		<form action="search" method="post">
-			<input type="text" class="search-input" placeholder="Search ingredients..."
-				name="ingredient"> <input type="submit"
-				class="search-button" />
-		</form>
+	<center>
+		<%
+		Object msg = request.getAttribute("message");
+		if (msg != null) {
+			out.println(msg.toString());
+		}
+		%>
+		<div class="top">
+			<a href="./userLogin.jsp" id="back"><i class="fa-solid fa-circle-left fa-lg" 
+			aria-hidden="true"></i></a> 
+		</div>
 
-	</div>
+		<h1 id="my-head">User Registration</h1>
 
-	<div class="main-body">
-		<c:forEach items="${recipeList}" var="recipe">
-			<div class="card">
-				<a href="recipes?id=<c:out value='${recipe.recipeId}'/>"> <img
-					src="<c:out value="${recipe.imageUrl}"/>" />
-				</a>
 
-				<div class="card-content">
-					<h5 class="card-title">
-						<c:out value="${recipe.recipeName}" />
-					</h5>
-					<p class="card-text">
-						<c:out value="${recipe.recipeDescription}" />
-					</p>
+		<div class="my-div">
+			<br>
+			<form action="register" method="post">
+				<div>
+					<label><i class="fa-solid fa-user fa-lg" id="user"></i></label> <input type="text" name="userName" placeholder="Name"
+						class="search-input">
 				</div>
-			</div>
-		</c:forEach>
+				<br>
+				
+				<div>
+					<label><i class="fa-solid fa-envelope fa-lg" id="email"></i></label> <input type="email" name="userEmail" placeholder="Email"
+						class="search-input">
+				</div>
+				<br>
+				
+				<div>
+					<label><i class="fa-solid fa-lock fa-lg" id="pwd1"></i></label> <input type="password" name="userPwd1" placeholder="password"
+						class="search-input">
+				</div>
+				<br>
 
-	</div>
+				<div>
+					<label><i class="fa-solid fa-unlock-keyhole fa-lg" id="pwd2"></i></label>
+					<input type="password" name="userPwd2" placeholder="Repeat your password"
+						class="search-input">
+				</div>
+				<br>
+
+				<div>
+					<label><i class="fa-solid fa-phone fa-lg" id="contact"></i></label> <input type="tel" name="userContact"placeholder="Contact Number"
+						class="search-input">
+				</div>
+				<br> <br>
+				<button type="submit" class="submit-button">Register</button>
+			</form>
+
+		</div>
+	</center>
 
 </body>
 </html>

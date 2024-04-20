@@ -32,8 +32,12 @@ public class RecipeDao {
 				String description = rs.getString(4);
 				String time = rs.getString(5);
 				String category = rs.getString(6);
+				String ingredients = rs.getString(7);
+				String instructions = rs.getString(8);
+				String youtube_link = rs.getString(9);
+				
 
-				Recipe recipe = new Recipe(id, name, image, description, time, category);
+				Recipe recipe = new Recipe(id, name, image, description, time, category, ingredients, instructions, youtube_link);
 				list.add(recipe);
 			}
 
@@ -69,8 +73,11 @@ public class RecipeDao {
 				String description = rs.getString(4);
 				String time = rs.getString(5);
 				String category = rs.getString(6);
+				String ingredients = rs.getString(7);
+				String instructions = rs.getString(8);
+				String youtube_link = rs.getString(9);
 
-				recipe = new Recipe(recipe_id, name, url, description, time, category);
+				recipe = new Recipe(recipe_id, name, url, description, time, category, ingredients, instructions, youtube_link);
 			}
 			ps.close();
 			rs.close();
@@ -84,32 +91,51 @@ public class RecipeDao {
 		}
 		return recipe;
 	}
+	
 
 	// search recipe
-	public List<Recipe> searchRecipes() {
+	public static  List<Recipe> searchRecipesByIngredients(String[] ingredients_name)throws SQLException {
 
-		List<Recipe> list = new ArrayList<Recipe>();
+		List<Recipe> recipes = new ArrayList<>();
 
 		Connection con = ConnectionFactory.getConnection();
 
-		String sql = "SELECT * FROM Recipes WHERE recipe_name like '%recipeName%'";
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT * FROM Recipes WHERE ");
+		
+		for(int i=0; i<ingredients_name.length; i++) {
+			if(i>0) {
+				sql.append("AND");
+			}
+			sql.append("ingredients_name LIKE ?");
+			if( i < ingredients_name.length - 1) {
+				sql.append("AND");
+			}
+		}
 
-		try {
-			PreparedStatement ps = con.prepareStatement(sql);
-
-			ResultSet rs = ps.executeQuery();
-
+		try (PreparedStatement ps = con.prepareStatement(sql.toString()))
+			{
+				for(int i=0; i<ingredients_name.length; i++) {
+					ps.setString(i+1, "%" + ingredients_name[i] + "%");
+				}
+			
+		try (ResultSet rs = ps.executeQuery()){
+			
 			while (rs.next()) {
-
-				Integer id = rs.getInt(1);
-				String name = rs.getString(2);
-				String image = rs.getString(3);
-				String description = rs.getString(4);
-				String time = rs.getString(5);
-				String category = rs.getString(6);
-
-				Recipe recipe = new Recipe(id, name, image, description, time, category);
-				list.add(recipe);
+				
+				Recipe recipe = new Recipe();
+				
+				recipe.setRecipeId(rs.getInt("recipe_id"));
+				recipe.setRecipeName(rs.getString("recipe_name"));
+				recipe.setImageUrl(rs.getString("recipe_imageurl"));
+				recipe.setRecipeDescription(rs.getString("recipe_description"));
+				recipe.setRecipeTime(rs.getString("recipe_time"));
+				recipe.setRecipeCategory(rs.getString("recipe_category"));
+				recipe.setIngredientsName(rs.getString("ingredients_name"));
+				recipe.setInstructions(rs.getString("instructions"));
+				recipe.setYoutubeLink(rs.getString("youtube_link"));
+				
+				recipes.add(recipe);
 			}
 			ps.close();
 			rs.close();
@@ -121,27 +147,34 @@ public class RecipeDao {
 			exception.printStackTrace();
 			System.out.println("Error - Recipe Fetching Operation Failed !");
 		}
-		return list;
+		return recipes;
+		}
 	}
 
 	// add a recipe
 
 	public static int addRecipe(Recipe recipe) {
+	
 		Connection con = ConnectionFactory.getConnection();
-
-		String sql = "INSERT INTO Recipes VALUES (NULL,?,?,?,?,?)";
+		
+		String sql = "INSERT INTO Recipes VALUES(NULL,?,?,?,?,?,?,?,?)";
 
 		int result = 0;
 
 		try {
+			System.out.println("control in try block!");
+			System.out.println(recipe);
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, recipe.getRecipeName());
 			ps.setString(2, recipe.getImageUrl());
 			ps.setString(3, recipe.getRecipeDescription());
 			ps.setString(4, recipe.getRecipeTime());
 			ps.setString(5, recipe.getRecipeCategory());
-
-			result = ps.executeUpdate(); // no.of rows affected
+			ps.setString(6, recipe.getIngredientsName());
+			ps.setString(7, recipe.getInstructions());
+			ps.setString(8, recipe.getYoutubeLink());
+			
+			result = ps.executeUpdate(); 
 
 			ps.close();
 			con.close();
@@ -162,7 +195,7 @@ public class RecipeDao {
 	// update a recipe
 	public int updateRecipe(Recipe recipe) {
 		Connection con = ConnectionFactory.getConnection();
-		String sql = "UPDATE Recipes SET recipe_name=?,recipe_imageurl=?,recipe_description=?,recipe_time =?,recipe_category=? WHERE recipe_id = ?";
+		String sql = "UPDATE Recipes SET recipe_name=?,recipe_imageurl=?,recipe_description=?,recipe_time =?,recipe_category=?,ingredients_name=?,instructions=?,youtube_link=? WHERE recipe_id = ?";
 
 		int result = 0;
 		try {
@@ -172,7 +205,10 @@ public class RecipeDao {
 			ps.setString(3, recipe.getRecipeDescription());
 			ps.setString(4, recipe.getRecipeTime());
 			ps.setString(5, recipe.getRecipeCategory());
-			ps.setInt(6, recipe.getRecipeId());
+			ps.setString(6, recipe.getIngredientsName());
+			ps.setString(7, recipe.getInstructions());
+			ps.setString(8, recipe.getYoutubeLink());
+			ps.setInt(9, recipe.getRecipeId());
 
 			result = ps.executeUpdate();
 			ps.close();

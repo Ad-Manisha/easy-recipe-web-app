@@ -101,7 +101,7 @@ nav a:hover, .my-btn:hover {
 	margin: 20px;
 	overflow: hidden;
 	transition: box-shadow 0.3s;
-	width: 300px;
+	width: 313px;
 	height: 400px;
 	background-color: #fff;
 }
@@ -158,15 +158,15 @@ p {
 		</div>
 		<nav>
 			<a href="./index.jsp">Home</a> <a href="./addRecipe.jsp">Add
-				Recipe</a> <a href="">Modify</a> <a href="">Feedback</a>
+				Recipe</a>
 
 		</nav>
 	</header>
 
 	<div class="search-container">
-		<form action="search" method="GET">
-			<input type="text" class="search-input" placeholder="Search..."
-				name="recipeName"> <input type="submit"
+		<form action="search" method="post">
+			<input type="text" class="search-input" placeholder="Search..ingredients.."
+				name="ingredient"> <input type="submit"
 				class="search-button" />
 		</form>
 	</div>

@@ -1,21 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="ISO-8859-1">
+<title>New Contact</title>
 <style>
 body {
-	margin: 0;
-	padding: 0;
-}
-
-.main-body {
-	display: flex;
-	flex-wrap: wrap;
 	font-family: Arial, sans-serif;
 	background-color: #f4f4f4;
 	margin: 0;
@@ -29,6 +20,11 @@ header {
 	padding: 20px;
 	background-color: tomato;
 	color: #fff;
+}
+
+.my-div {
+	height: 550px;
+	width: 350px;
 }
 
 .logo {
@@ -59,79 +55,14 @@ nav a:hover, .my-btn:hover {
 	color: #20353b;
 }
 
-.search-container {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: #f4f4f4;
-	height: 10vh;
+#my-head {
+	margin-left: 150px;
 }
 
-.search-input {
-	padding: 10px;
-	border: 1px solid #ccc;
-	border-radius: 4px 0 0 4px;
-	font-size: 16px;
-}
 
-.search-button {
-	background-color: tomato;
-	color: #fff;
-	padding: 10px 15px;
-	border: 1px solid tomato;
-	border-radius: 0 4px 4px 0;
-	cursor: pointer;
-	font-size: 16px;
-}
-
-.search-button:hover {
-	background-color: #f55e07;
-	border-color: #bf2b0b;
-}
-
-.card {
-	border: 1px solid #ddd;
-	border-radius: 8px;
-	margin: 20px;
-	overflow: hidden;
-	transition: box-shadow 0.3s;
-	width: 313px;
-	height: 400px;
-	background-color: #fff;
-}
-
-.card:hover {
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.card img {
-	width: 100%;
-	height: 200px;
-	object-fit: cover;
-}
-
-.card-content {
-	padding: 15px;
-}
-
-.card-title {
-	font-size: 1.25rem;
-	margin-bottom: 0.75rem;
-}
-
-.card-text {
-	color: #666;
-	text-align: left;
-}
-
-p {
-	text-align: right;
-}
 </style>
-<title>Recipe List</title>
 </head>
 <body>
-
 	<header>
 		<div class="logo">
 			<img alt="Easy-Recipe Logo"
@@ -139,40 +70,20 @@ p {
 			<h1>Easy Recipe</h1>
 		</div>
 		<nav>
-			<a href="./index.jsp">Home</a> <a href="./adminLogin.jsp">Modify</a> <a
-				href="./userLogin.jsp">Feedback</a>
-
+			<a href="./index.jsp">Home</a> <a href="adminRec-list">Update</a> <a href="RecipeList">Recipes</a> <a href="./viewComments.jsp">View Comments</a>
 		</nav>
 	</header>
 
-	<div class="search-container">
-		<form action="search" method="post">
-			<input type="text" class="search-input" placeholder="Search ingredients..."
-				name="ingredient"> <input type="submit"
-				class="search-button" />
-		</form>
+	<center>
+		<%
+		Object msg = request.getAttribute("message");
+		if (msg != null) {
+			out.println(msg.toString());
+		}
+		%>
 
-	</div>
-
-	<div class="main-body">
-		<c:forEach items="${recipeList}" var="recipe">
-			<div class="card">
-				<a href="recipes?id=<c:out value='${recipe.recipeId}'/>"> <img
-					src="<c:out value="${recipe.imageUrl}"/>" />
-				</a>
-
-				<div class="card-content">
-					<h5 class="card-title">
-						<c:out value="${recipe.recipeName}" />
-					</h5>
-					<p class="card-text">
-						<c:out value="${recipe.recipeDescription}" />
-					</p>
-				</div>
-			</div>
-		</c:forEach>
-
-	</div>
+		<h1 id="my-head">Welcome !!</h1>
+	</center>
 
 </body>
 </html>

@@ -11,6 +11,7 @@
 body {
 	margin: 0;
 	padding: 0;
+	background-color: #f4f4f4;
 }
 
 .main-body {
@@ -65,7 +66,8 @@ nav a:hover, .my-btn:hover {
 	margin: 20px;
 	overflow: hidden;
 	transition: box-shadow 0.3s;
-	width: 300px;
+	width: 313px;
+	height: 400px;
 	background-color: #fff;
 }
 
@@ -96,8 +98,13 @@ nav a:hover, .my-btn:hover {
 p {
 	text-align: right;
 }
+#my-head {
+	margin-left:600px;
+	color: #2e4578;
+}
 </style>
-<title>Recipe List</title>
+
+<title>Search Result</title>
 </head>
 <body>
 
@@ -108,16 +115,16 @@ p {
 			<h1>Easy Recipe</h1>
 		</div>
 		<nav>
-			<a href="./index.jsp">Home</a> <a href="./addRecipe.jsp">Add
-				Recipe</a>
+			<a href="./index.jsp">Home</a> <a href="RecipeList">Recipes</a>
 		</nav>
 	</header>
 
-
+<h1 id="my-head">Search Results</h1>
 	<div class="main-body">
-		<c:forEach items="${search}" var="recipe">
+		
+		<c:forEach items="${recipes}" var="recipe">
 			<div class="card">
-				<a href="search?recipeId=<c:out value='${recipe.recipeId}'/>"> <img
+				<a href="recipes?id=<c:out value='${recipe.recipeId}'/>"> <img
 					src="<c:out value="${recipe.imageUrl}"/>" />
 				</a>
 

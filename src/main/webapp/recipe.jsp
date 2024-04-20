@@ -48,85 +48,74 @@ nav {
 	color: #5b79bd;
 }
 
-.recipe {
-	position: absolute;
-	top: 5px;
-	left: 400px;
-}
 
-.recipe img {
+.container{
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 0;
+}
+h1{
+	text-align:center;
+	color: #444;
+}
+h3{
+	color: #444;
+}
+#desc{
+	text-align:justify;
+	color: #444;
+}
+#image {
 	border-top-right-radius: 7px;
 	border-top-left-radius: 7px;
 	border-bottom-right-radius: 7px;
 	border-bottom-left-radius: 7px;
-	margin-top: 40px;
-	width: 450px;
-	height: 300px;
+  	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+  	width: 75%;
 }
 
-.recipe-content {
-	padding: 25px;
+.recipe {
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	margin-bottom: 20px;
 }
 
-.recipe-title {
-	font-size: 3rem;
-	margin-bottom: 0.75rem;
-	margin-left: 6rem;
+.ingredient-list{
+	margin-bottom: 10px;
+}
+.instructions {
+	margin-bottom: 20px;
+}
+#time{
+	font: 10px;
+	color:#444;
+	
+}
+#category{
+	font: 15px;
+	color:green;
 }
 
-.recipe-time, .recipe-category {
-	font-size: 60px bold;
-	margin-bottom: 0.75rem;
-	color: black;
+#yt{
+	color: #31708f;
+	margin-left: 17rem;
 }
-
-.recipe-description {
-	font-size: 2rem bold;
-	margin-bottom: 0.75rem;
-	margin-left: 4rem;
-	color: #666;
-}
-
-.recipe-category {
-	font-size: 0.75rem bold;
-	margin-bottom: 0.75rem;
-	color: green;
-}
-
-.recipe-text {
-	color: #666;
-}
-
-.text {
-	font-size: 0.75rem bold;
-	margin-bottom: 0.75rem;
-	color: brown;
-}
-
-li {
-	font-size: 0.75rem;
-	margin-bottom: 0.75rem;
-	color: black;
-}
-
-ol li {
-	list-style-type: upper-roman;
-}
-
-ul li {
-	list-style-type: circle;
-}
-
 #yt-link {
 	color: #31708f;
 	text-decoration: none;
 	font-weight: bold;
-	margin-left: 10rem;
+	padding:3px;
+	margin-right: 10rem;
 }
 
 #yt-link:hover {
 	text-decoration: underline;
 }
+
 </style>
 </head>
 <body>
@@ -137,51 +126,36 @@ ul li {
 	</nav>
 
 	<div class="main-body">
-		<div class="recipe">
+		<div class="container">
+		
+			<h1>Recipe: <c:out value="${recipe.recipeName}" /></h1>
+			<img src="<c:out value="${recipe.imageUrl}" />"id="image" class="center" />
+			<br>
+			<h3 id = "desc"><c:out value="${recipe.recipeDescription}" /></h3>
+			<h5 id="time">
+					<i class="fa-solid fa-clock fa-lg"></i> : <c:out value="${recipe.recipeTime}" />
+			</h5>
 
-			<img src="<c:out value="${recipe.imageUrl}"/>" />
+			<h5 id="category">Category: <c:out value="${recipe.recipeCategory}" /></h5>
+			
 
-			<div class="recipe-content">
-				<h3 class="recipe-title">
-					<c:out value="${recipe.recipeName}" />
-				</h3>
-				<h4 class="recipe-description">
-					<c:out value="${recipe.recipeDescription}" />
-				</h4>
-				<br>
-				<h5 class="recipe-time">
-					Time:
-					<c:out value="${recipe.recipeTime}" />
-				</h5>
-				<h5 class="recipe-category">
-					Category:
-					<c:out value="${recipe.recipeCategory}" />
-				</h5>
-				<p class="recipe-text">
-				<h5 class="text">Ingredients:</h5>
-
-				<ol>
-					<li>2 cup X</li>
-					<li>1/2 tablespoon Y</li>
-					<li>1/2 cup Z</li>
-				</ol>
-				<br>
-				<h5 class="text">Preparation :</h5>
-
-				<ul>
-					<li>Step 1:</li>
-					<li>Step 2:</li>
-					<li>Step 3:</li>
+			<div class="recipe">
+			
+				<h3>Ingredients</h3>
+				<ul class="ingredient-list">
+					<c:out value="${recipe.ingredientsName}" />
 				</ul>
-
-				<a id="yt-link"
-					href="https://www.youtube.com/watch?v=uygb9O-MDPw&pp=ygUnYmVzdCByZWNpcGUgY2hhbm5lbCBmb3IgY2hpY2tlbiBiaXJ5YW5p">video
-					link to youtube</a>
-			</div>
+				
+				
+				<h3>Instructions</h3>
+				<ol class="instructions">
+					<c:out value="${recipe.instructions}" />
+				</ol>	
+				
+				<i class="fa-brands fa-youtube fa-lg" id="yt"></i><a id="yt-link"
+					href="<c:out value="${recipe.youtubeLink}" />">video link to youtube</a>
 		</div>
+	</div>	
 
-	</div>
 
-
-</body>
-</html>
+			

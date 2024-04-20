@@ -66,6 +66,7 @@ nav a:hover, .my-btn:hover {
 }
 
 label, input {
+	color: black;
 	display: block;
 	margin-left: 9px;
 	border-top-left-radius: 5px;
@@ -104,7 +105,7 @@ label, input {
 	margin-left: 150px;
 }
 
-#desc {
+#desc,#ingredientName, #instruction, #link {
 	margin-left: 10px;
 }
 </style>
@@ -153,11 +154,16 @@ label, input {
 						value="<c:out value='${recipe.imageUrl}'></c:out>">
 				</div>
 				<br>
-
+				<div>
+					<label>Ingredients :</label>
+						<textarea rows="3" cols="6" name="ingredientsName"
+						class="search-input" id="ingredientName"><c:out
+							value='${recipe.ingredientsName}'></c:out></textarea>
+				</div>
+				<br>
 				<div>
 					<label>Description :</label>
-
-					<textarea rows="3" cols="6" name="recipeDescription"
+						<textarea rows="3" cols="6" name="recipeDescription"
 						class="search-input" id="desc"><c:out
 							value='${recipe.recipeDescription}'></c:out></textarea>
 				</div>
@@ -169,12 +175,26 @@ label, input {
 						value="<c:out value='${recipe.recipeTime}'></c:out>">
 				</div>
 				<br>
-
+				<div>
+					<label>Instructions :</label>
+						<textarea rows="3" cols="6" name="instructions"
+						class="search-input" id="instruction"><c:out
+							value='${recipe.instructions}'></c:out></textarea>
+				</div>
+				<br>
+				
 				<div>
 					<label>Recipe Category :</label> <input type="text"
 						name="recipeCategory" class="search-input"
 						value="<c:out value='${recipe.recipeCategory}'></c:out>">
 				</div>
+				<div>
+					<label>Youtube Link :</label>
+						<textarea rows="3" cols="6" name="youtubeLink"
+						class="search-input" id="link"><c:out
+							value='${recipe.youtubeLink}'></c:out></textarea>
+				</div>
+				<br>
 				<br> <br>
 				<button type="submit" class="submit-button">Update</button>
 			</form>

@@ -4,6 +4,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+	integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <title>New Contact</title>
 <style>
 body {
@@ -101,10 +106,16 @@ label, input {
 
 #my-head {
 	margin-left: 150px;
+	color: #2e4578;
 }
 
-#desc {
+#desc,#ingredients {
 	margin-left: 10px;
+}
+#name,#image,#comment,#time,#ingredient,#link,#instruction{
+	color: #2e4578;
+	font-weight: bold;
+	transition: color 0.3s ease-in-out;
 }
 </style>
 </head>
@@ -135,29 +146,46 @@ label, input {
 			<br>
 			<form action="addRecipe" method="post">
 				<div>
-					<label>Recipe Name :</label> <input type="text" name="recipeName"
-						class="search-input">
+					<label><i class="fa-solid fa-utensils fa-lg" id="name"></i></label> <input type="text" name="recipeName"
+						class="search-input" placeholder="Recipe Name">
 				</div>
 				<br>
 				<div>
-					<label>Image Url :</label> <input type="text" name="imageUrl"
-						class="search-input">
+					<label><i class="fa-solid fa-image fa-lg" id="image" ></i></label> <input type="text" name="imageUrl"
+						class="search-input"  placeholder="Image URl">
 				</div>
 				<br>
-
 				<div>
-					<label>Description :</label>
+					<label><i class="fa-solid fa-bowl-food fa-lg" id="ingredient"></i></label>
+					<textarea rows="3" cols="6" name="ingredientsName"
+						class="search-input" id="ingredients"  placeholder="Ingredients"></textarea>
+				</div>
+				<br>
+				<div>
+					<label><i class="fa-solid fa-comment fa-lg" id="comment"></i></label>
 					<textarea rows="3" cols="6" name="recipeDescription"
-						class="search-input" id="desc"></textarea>
+						class="search-input" id="desc"  placeholder="Description"></textarea>
 				</div>
 				<br>
 
 				<div>
-					<label>Time :</label> <input type="text" name="recipeTime"
-						class="search-input">
+					<label><i class="fa-solid fa-clock fa-lg" id="time"></i></label> <input type="text" name="recipeTime"
+						class="search-input"  placeholder="Time">
 				</div>
 				<br>
-
+				<div>
+					<label><i class="fa-solid fa-comment fa-lg" id="instruction"></i></label>
+					<textarea rows="6" cols="12" name="instructions"
+						class="search-input" id="instructions"  placeholder="Instructions"></textarea>
+				</div>
+				<br>
+				<div>
+					<label><i class="fa-solid fa-link fa-lg" id="link"></i></i></label>
+					<textarea rows="3" cols="6" name="youtubeLink"
+						class="search-input" id="links"  placeholder="Youtube Link"></textarea>
+				</div>
+				<br>
+				
 				<div>
 					<label>Category:</label> <select name="recipeCategory">
 						<option value="1">Veg</option>
