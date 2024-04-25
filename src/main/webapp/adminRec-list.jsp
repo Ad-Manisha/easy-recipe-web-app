@@ -61,6 +61,10 @@ nav a {
 	transition: color 0.3s ease-in-out;
 }
 
+#name {
+	color: #20353b;
+}
+
 nav a:hover, .my-btn:hover {
 	color: #20353b;
 }
@@ -158,7 +162,9 @@ p {
 		</div>
 		<nav>
 			<a href="./index.jsp">Home</a> <a href="./addRecipe.jsp">Add
-				Recipe</a>
+				Recipe</a> <a href="adminLogout">Logout</a> <a href="#" id="name"><i
+				class="fa-solid fa-user-tie fa-lg" id="name"></i> <%=session.getAttribute("name")%>
+			</a>
 
 		</nav>
 	</header>

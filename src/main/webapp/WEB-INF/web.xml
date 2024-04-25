@@ -82,6 +82,18 @@
 		<description></description>
 		<servlet-class>com.easy_recipe.controllers.CommentController</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>UserLogoutController</servlet-name>
+		<display-name>UserLogoutController</display-name>
+		<description></description>
+		<servlet-class>com.easy_recipe.controllers.UserLogoutController</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AdminLogoutController</servlet-name>
+		<display-name>AdminLogoutController</display-name>
+		<description></description>
+		<servlet-class>com.easy_recipe.controllers.AdminLogoutController</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>RecipeListController</servlet-name>
 		<url-pattern>/RecipeList</url-pattern>
@@ -133,6 +145,14 @@
 	<servlet-mapping>
 		<servlet-name>CommentController</servlet-name>
 		<url-pattern>/commentController</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UserLogoutController</servlet-name>
+		<url-pattern>/userLogout</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AdminLogoutController</servlet-name>
+		<url-pattern>/adminLogout</url-pattern>
 	</servlet-mapping>
 
 	<error-page>

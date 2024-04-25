@@ -56,6 +56,10 @@ nav a {
 	transition: color 0.3s ease-in-out;
 }
 
+#name {
+	color: #20353b;
+}
+
 nav a:hover, .my-btn:hover {
 	color: #20353b;
 }
@@ -124,23 +128,34 @@ label, input {
 			<h1>Easy Recipe</h1>
 		</div>
 		<nav>
-			<a href="./index.jsp">Home</a> <a href="RecipeList">Recipes</a>
+			<a href="./index.jsp">Home</a> <a href="RecipeList">Recipes</a> <a
+				href="userLogout">Logout</a> <a href="#" id="name"><i
+				class="fa-solid fa-user fa-lg" id="name"></i> <%=session.getAttribute("name") %>
+			</a>
 		</nav>
 	</header>
 
 	<center>
+
 		<%
-		Object msg = request.getAttribute("message");
-		if (msg != null) {
-			out.println(msg.toString());
-		}
-		%>
+		if(session.getAttribute("name")==null)
+			response.sendRedirect("userLogin.jsp");
+	%>
+
+		<% String message = (String)request.getAttribute("message"); %>
+
+		<%-- Check if the message is not null --%>
+		<% if (message != null && !message.isEmpty()) { %>
+		<script>
+            // Display the message in an alert box
+            alert("<%= message %>");
+        </script>
+		<% } %>
+
+
 
 		<h1 id="my-head">Leave a Comment</h1>
-		<br>
-		<br>
-		<br>
-		<br>
+		<br> <br> <br> <br>
 
 		<div class="my-div">
 			<br>

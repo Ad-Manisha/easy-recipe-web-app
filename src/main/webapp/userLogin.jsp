@@ -148,12 +148,13 @@ nav a:hover {
 		</nav>
 	</header>
 	<center>
-		<%
-		Object msg = request.getAttribute("message");
-		if (msg != null) {
-			out.println(msg.toString());
-		}
-		%>
+			<% String message = (String)request.getAttribute("message"); %>
+			<% if (message != null && !message.isEmpty()) { %>
+			<script>
+              alert("<%= message %>");
+        	</script>
+			<% } %>
+
 
 		<h1 id="head">User Login</h1>
 

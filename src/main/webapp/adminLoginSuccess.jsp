@@ -4,7 +4,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>New Contact</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+	integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<title>Admin Login Success</title>
 <style>
 body {
 	font-family: Arial, sans-serif;
@@ -51,6 +56,10 @@ nav a {
 	transition: color 0.3s ease-in-out;
 }
 
+#name {
+	color: #20353b;
+}
+
 nav a:hover, .my-btn:hover {
 	color: #20353b;
 }
@@ -70,7 +79,9 @@ nav a:hover, .my-btn:hover {
 		<nav>
 			<a href="./index.jsp">Home</a> <a href="adminRec-list">Update</a> <a
 				href="RecipeList">Recipes</a> <a href="./viewComments.jsp">View
-				Comments</a>
+				Comments</a> <a href="#" id="name"><i
+				class="fa-solid fa-user-tie fa-lg" id="name"></i> <%=session.getAttribute("name")%>
+			</a>
 		</nav>
 	</header>
 
@@ -82,7 +93,11 @@ nav a:hover, .my-btn:hover {
 		}
 		%>
 
-		<h1 id="my-head">Welcome !!</h1>
+		<h1 id="my-head">
+			Welcome
+			<%=session.getAttribute("name")%>
+			!!
+		</h1>
 	</center>
 
 </body>

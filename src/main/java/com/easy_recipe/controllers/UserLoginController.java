@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.easy_recipe.connection.ConnectionFactory;
 
@@ -19,8 +20,10 @@ public class UserLoginController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		String user_email = request.getParameter("txtName");
 		String user_password = request.getParameter("txtPwd");
+		HttpSession session= request.getSession();
 		RequestDispatcher rd = null;
 		Connection con = null;
 
@@ -29,12 +32,16 @@ public class UserLoginController extends HttpServlet {
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM Users WHERE user_email=? and user_password=?");
 			ps.setString(1, user_email);
 			ps.setString(2, user_password);
-
+			
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
+				session.setAttribute("name", rs.getString("user_name"));
+				
 				rd = request.getRequestDispatcher("userComments.jsp");
+				
 			} else {
+				request.setAttribute("message", "Login Failed ! Wrong username or password");
 				rd = request.getRequestDispatcher("userLogin.jsp");
 
 			}

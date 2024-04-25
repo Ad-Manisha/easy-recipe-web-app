@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.easy_recipe.connection.ConnectionFactory;
 
@@ -25,6 +26,7 @@ public class AdminLoginController extends HttpServlet {
 			Connection con = ConnectionFactory.getConnection();
 			String n = request.getParameter("txtName");
 			String p = request.getParameter("txtPwd");
+			HttpSession session = request.getSession();
 
 			PreparedStatement ps = con
 					.prepareStatement("SELECT user_name FROM AdminLogin where user_name=? and password=?");
@@ -33,6 +35,7 @@ public class AdminLoginController extends HttpServlet {
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
+				session.setAttribute("name", "Admin");
 				RequestDispatcher rd = request.getRequestDispatcher("adminLoginSuccess.jsp");
 				rd.forward(request, response);
 			} else {

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,7 @@ public class CommentController extends HttpServlet {
 			throws ServletException, IOException {
 		String comment = request.getParameter("comment");
 		String user_name = request.getParameter("userName");
+		RequestDispatcher rd = null;
 
 		try {
 
@@ -32,7 +34,9 @@ public class CommentController extends HttpServlet {
 
 			con.close();
 
-			response.sendRedirect("userComments.jsp?message=Comment+submitted+successfully");
+			request.setAttribute("message", " Comments submitted Successfully!");
+			rd = request.getRequestDispatcher("userComments.jsp");
+			rd.forward(request, response);
 		} catch (Exception e) {
 
 			e.printStackTrace();
