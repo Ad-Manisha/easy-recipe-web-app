@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +41,7 @@ header {
 .logo img {
 	width: 40px;
 	height: 40px;
-	margin-left:0px;
+	margin-left: 0px;
 }
 
 nav {
@@ -61,30 +61,31 @@ nav a:hover, .my-btn:hover {
 	color: #20353b;
 }
 
-.my-div  {
+.my-div {
 	font-size: 14px bold;
 	padding: 5px;
 	color: black;
-	margin-top:110px;
+	margin-top: 110px;
 	dispplay: inline-block;
 	text-align: left;
 }
 
-#user, #password{
+#user, #password {
 	color: #2e4578;
 	font-weight: bold;
 	transition: color 0.3s ease-in-out;
-	margin-left:50px;
+	margin-left: 59px;
 }
+
 .search-input {
-	position:relative;
+	position: relative;
 	padding: 9px;
 	border: 1px solid #ccc;
 	border-radius: 4px 0 0 4px;
 	font-size: 15px;
 	width: 270px;
-	height:20px;
-	margin-left:-150px;
+	height: 20px;
+	margin-left: -150px;
 }
 
 .submit-button {
@@ -96,7 +97,6 @@ nav a:hover, .my-btn:hover {
 	border-radius: 0 4px 4px 0;
 	cursor: pointer;
 	font-size: 15px;
-	
 }
 
 .submit-button:hover {
@@ -108,21 +108,21 @@ nav a:hover, .my-btn:hover {
 	margin-left: 10px;
 }
 
-#submit{
+#submit {
 	margin-left: 220px;
 	margin-bottom: 70px;
 }
 
-#reset{
+#reset {
 	width: 60%;
 	margin-left: 60px;
 	margin-bottom: 70px;
 }
-#head{
-	text-align:center;
+
+#head {
+	text-align: center;
 	color: #2e4578;
 }
-
 </style>
 </head>
 <body>
@@ -143,20 +143,57 @@ nav a:hover, .my-btn:hover {
 			out.println(msg.toString());
 		}
 		%>
-		
-	 	<h1 id="head">Admin Login</h1>
-	 	
-        <div  class="my-div">
-	       <form action="adminLogin" id="form" method=post>
-	        <table>
-	        	<tr class="label"><td ><i class="fa-solid fa-user-tie fa-lg" id="user"></i></td><td><input  type=text name=txtName class="search-input"></td></tr>
-	        	<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
-	        	<tr class="label"><td ><i class="fa-solid fa-lock fa-lg" id="password"></i></td><td><input  type=password name=txtPwd class="search-input"></td></tr>
-          		<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
-        		<tr><td><input  type=submit value=login class="submit-button" id="submit"></td><td><input  type=reset class="submit-button" id="reset"></td></tr>
-        	</table>
-    	  </form>
-    </div>
-  </center> 
+
+		<h1 id="head">Admin Login</h1>
+
+		<div class="my-div">
+			<form action="adminLogin" id="form" method=post>
+				<table>
+					<tr class="label">
+						<td><i class="fa-solid fa-user-tie fa-lg" id="user"></i></td>
+						<td><input type=text name=txtName class="search-input"></td>
+					</tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr class="label">
+						<td><i class="fa-solid fa-lock fa-lg" id="password"></i></td>
+						<td><input type=password name=txtPwd class="search-input"></td>
+					</tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr>
+						<td><input type=submit value=login class="submit-button"
+							id="submit"></td>
+						<td><input type=reset class="submit-button" id="reset"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</center>
 </body>
 </html>

@@ -109,7 +109,7 @@ label, input {
 	color: #2e4578;
 }
 
-#comments,#user{
+#comments, #user {
 	color: #2e4578;
 	font-weight: bold;
 	transition: color 0.3s ease-in-out;
@@ -137,23 +137,27 @@ label, input {
 		%>
 
 		<h1 id="my-head">Leave a Comment</h1>
-		<br><br><br><br>
+		<br>
+		<br>
+		<br>
+		<br>
 
 		<div class="my-div">
 			<br>
 			<form action="commentController" method="post">
-				
+
 				<div>
-					<label><i class="fa-solid fa-user fa-lg" id="user"></i></label> <input type="text" name="userName" placeholder="Username"
+					<label><i class="fa-solid fa-user fa-lg" id="user"></i></label> <input
+						type="text" name="userName" placeholder="Username"
 						class="search-input">
 				</div>
 				<br>
 				<div>
 					<label><i class="fa-solid fa-comment fa-lg" id="comments"></i></label>
-					<textarea rows="8" cols="100" name="comment"
-						class="search-input" id="commentBox"  placeholder="Any Feedbacks ?"></textarea>
+					<textarea rows="8" cols="100" name="comment" class="search-input"
+						id="commentBox" placeholder="Any Feedbacks ?"></textarea>
 				</div>
-				
+
 				<br> <br>
 				<button type="submit" class="submit-button">Submit</button>
 			</form>

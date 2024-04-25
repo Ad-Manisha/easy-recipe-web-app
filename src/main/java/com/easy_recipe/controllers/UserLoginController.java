@@ -14,36 +14,33 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.easy_recipe.connection.ConnectionFactory;
 
-
-
 public class UserLoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
- 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String user_email= request.getParameter("txtName");
-		String user_password= request.getParameter("txtPwd");
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String user_email = request.getParameter("txtName");
+		String user_password = request.getParameter("txtPwd");
 		RequestDispatcher rd = null;
 		Connection con = null;
-		
+
 		try {
 			con = ConnectionFactory.getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM Users WHERE user_email=? and user_password=?");
 			ps.setString(1, user_email);
 			ps.setString(2, user_password);
-			
+
 			ResultSet rs = ps.executeQuery();
-			
-			if(rs.next()){
+
+			if (rs.next()) {
 				rd = request.getRequestDispatcher("userComments.jsp");
-			}else {
+			} else {
 				rd = request.getRequestDispatcher("userLogin.jsp");
-				
+
 			}
 			rd.forward(request, response);
-			
-			
-		} catch(SQLException exception) {
+
+		} catch (SQLException exception) {
 			exception.printStackTrace();
 			request.setAttribute("message", "User Registration failed!");
 		}

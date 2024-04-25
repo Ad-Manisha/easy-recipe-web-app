@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +41,7 @@ header {
 .logo img {
 	width: 40px;
 	height: 40px;
-	margin-left:0px;
+	margin-left: 0px;
 }
 
 nav {
@@ -57,38 +57,38 @@ nav a {
 	transition: color 0.3s ease-in-out;
 }
 
-nav a:hover{
+nav a:hover {
 	color: #20353b;
 }
 
-.my-div  {
+.my-div {
 	font-size: 14px bold;
 	padding: 5px;
 	color: black;
-	margin-top:110px;
+	margin-top: 110px;
 	dispplay: inline-block;
 	text-align: left;
 }
 
-#user, #password{
+#user, #password {
 	color: #2e4578;
 	font-weight: bold;
 	transition: color 0.3s ease-in-out;
-	margin-left:50px;
+	margin-left: 50px;
 }
 
 .search-input {
-	position:relative;
+	position: relative;
 	padding: 9px;
 	border: 1px solid #ccc;
 	border-radius: 4px 0 0 4px;
 	font-size: 15px;
 	width: 290px;
-	height:20px;
-	margin-left:-170px;
+	height: 20px;
+	margin-left: -170px;
 }
 
-.submit-button,#register {
+.submit-button, #register {
 	width: 30%;
 	background-color: #f55e07;
 	color: #fff;
@@ -97,10 +97,9 @@ nav a:hover{
 	border-radius: 4px 4px 4px 4px;
 	cursor: pointer;
 	font-size: 15px;
-	
 }
 
-.submit-button:hover,#register:hover {
+.submit-button:hover, #register:hover {
 	background-color: green;
 	border-color: #035922;
 }
@@ -109,33 +108,32 @@ nav a:hover{
 	margin-left: 10px;
 }
 
-#submit{
+#submit {
 	margin-left: 220px;
-	margin-bottom:15px;
+	margin-bottom: 15px;
 }
 
-#reset{
+#reset {
 	width: 60%;
 	margin-left: 60px;
-	margin-bottom:15px;
+	margin-bottom: 15px;
 }
 
-#register{
+#register {
 	margin-left: 70px;
 	margin-bottom: 30px;
-	
 }
 
-#regda{
-	text-decoration:none;
+#regda {
+	text-decoration: none;
 	color: #fff;
 	transition: color 0.3s ease-in-out;
 }
-#head{
-	text-align:center;
+
+#head {
+	text-align: center;
 	color: #2e4578;
 }
-
 </style>
 </head>
 <body>
@@ -156,22 +154,61 @@ nav a:hover{
 			out.println(msg.toString());
 		}
 		%>
-		
-	 	<h1 id="head">User Login</h1>
-	 	
-        <div  class="my-div">
-	       <form action="userLogin" id="form" method=post>
-	        <table>
-	        	<tr class="label"><td ><i class="fa-solid fa-user fa-lg" id="user"></i></td><td><input  type=text name=txtName class="search-input" placeholder="Email"></td></tr>
-	        	<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
-	        	<tr class="label"><td ><i class="fa-solid fa-lock fa-lg" id="password"></i></td><td><input  type=password name=txtPwd class="search-input" placeholder="Password"></td></tr>
-          		<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
-        		<tr><td><input  type=submit value=login class="submit-button" id="submit"></td><td><input  type=reset class="submit-button" id="reset"></td></tr>
-        		<tr></tr><tr></tr><tr></tr><tr></tr>
-        		<tr><td><button id="register"><a href="./registration.jsp" id="regda">Register</a></button></td></tr>
-        	</table>
-    	  </form>
-    </div>
-  </center> 
+
+		<h1 id="head">User Login</h1>
+
+		<div class="my-div">
+			<form action="userLogin" id="form" method=post>
+				<table>
+					<tr class="label">
+						<td><i class="fa-solid fa-user fa-lg" id="user"></i></td>
+						<td><input type=text name=txtName class="search-input"
+							placeholder="Email"></td>
+					</tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr class="label">
+						<td><i class="fa-solid fa-lock fa-lg" id="password"></i></td>
+						<td><input type=password name=txtPwd class="search-input"
+							placeholder="Password"></td>
+					</tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr>
+						<td><input type=submit value=login class="submit-button"
+							id="submit"></td>
+						<td><input type=reset class="submit-button" id="reset"></td>
+					</tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr></tr>
+					<tr>
+						<td><button id="register">
+								<a href="./registration.jsp" id="regda">Register</a>
+							</button></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</center>
 </body>
 </html>

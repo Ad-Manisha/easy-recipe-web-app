@@ -59,20 +59,22 @@ nav a:hover, .my-btn:hover {
 	margin-left: 115px;
 	color: #2e4578;
 }
-  table {
-    border-collapse: collapse;
-    width: 75%;
-    height: 100%
-  }
- th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
- th {
-    background-color: #f2f2f2;
-  }
 
+table {
+	border-collapse: collapse;
+	width: 75%;
+	height: 100%
+}
+
+th, td {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: left;
+}
+
+th {
+	background-color: #f2f2f2;
+}
 </style>
 </head>
 <body>
@@ -83,7 +85,8 @@ nav a:hover, .my-btn:hover {
 			<h1>Easy Recipe</h1>
 		</div>
 		<nav>
-			<a href="./index.jsp">Home</a> <a href="adminRec-list">Update</a> <a href="RecipeList">Recipes</a>
+			<a href="./index.jsp">Home</a> <a href="adminRec-list">Update</a> <a
+				href="RecipeList">Recipes</a>
 		</nav>
 	</header>
 
@@ -98,14 +101,14 @@ nav a:hover, .my-btn:hover {
 		<h1 id="my-head">User Comments</h1>
 		<table>
 			<tr>
-				<th> User </th>
-				<th> Comments </th>
-				
+				<th>User</th>
+				<th>Comments</th>
+
 			</tr>
-			
+
 			<%--Retrieve comments from the database and display them --%>
-			<%@ page import="java.sql.*" %>
-			<%@ page import="java.util.*" %>
+			<%@ page import="java.sql.*"%>
+			<%@ page import="java.util.*"%>
 			<%
 				String url= "jdbc:mysql://localhost:3306/easy_recipe_app";
 				String user = "root";
@@ -139,7 +142,7 @@ nav a:hover, .my-btn:hover {
 					e.printStackTrace();
 				}
 			%>
-		
+
 		</table>
 	</center>
 

@@ -139,17 +139,17 @@ p {
 			<h1>Easy Recipe</h1>
 		</div>
 		<nav>
-			<a href="./index.jsp">Home</a> <a href="./adminLogin.jsp">Modify</a> <a
-				href="./userLogin.jsp">Feedback</a>
+			<a href="./index.jsp">Home</a> <a href="./adminLogin.jsp">Modify</a>
+			<a href="./userLogin.jsp">Feedback</a>
 
 		</nav>
 	</header>
 
 	<div class="search-container">
 		<form action="search" method="post">
-			<input type="text" class="search-input" placeholder="Search ingredients..."
-				name="ingredient"> <input type="submit"
-				class="search-button" />
+			<input type="text" class="search-input"
+				placeholder="Search ingredients..." name="ingredient"> <input
+				type="submit" class="search-button" />
 		</form>
 
 	</div>

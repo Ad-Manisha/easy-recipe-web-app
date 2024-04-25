@@ -38,7 +38,8 @@ public class UpdateRecipeController extends HttpServlet {
 		String instructions = request.getParameter("instructions");
 		String youtubeLink = request.getParameter("youtubeLink");
 
-		Recipe recipe = new Recipe(recipeId, recipeName, imageUrl, recipeDescription, recipeTime, recipeCategory, ingredientsName, instructions, youtubeLink);
+		Recipe recipe = new Recipe(recipeId, recipeName, imageUrl, recipeDescription, recipeTime, recipeCategory,
+				ingredientsName, instructions, youtubeLink);
 		int result = recipeDao.updateRecipe(recipe);
 
 		if (result == 1) {

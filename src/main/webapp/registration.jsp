@@ -27,18 +27,19 @@ header {
 	color: #fff;
 }
 
-.top{
+.top {
 	display: flex;
 	align-items: center;
 }
 
-#back{
+#back {
 	margin-top: 30px;
 	margin-left: 80px;
 	color: #2e4578;
 	font-weight: bold;
 	transition: color 0.3s ease-in-out;
 }
+
 #back:hover {
 	color: #5b79bd;
 }
@@ -127,12 +128,41 @@ label, input {
 #desc {
 	margin-left: 10px;
 }
-#user,#email,#pwd1,#pwd2,#contact{
+
+#user, #email, #pwd1, #pwd2, #contact {
 	color: #2e4578;
 	font-weight: bold;
 	transition: color 0.3s ease-in-out;
 }
+
+/* Styling for the alert box */
+.alert {
+	padding: 20px;
+	background-color: #f44336; /* Red */
+	color: white;
+	margin-bottom: 15px;
+	border-radius: 5px;
+	display: none; /* Hide alert box by default */
+}
+
+/* Styling for the close button */
+.closebtn {
+	margin-left: 15px;
+	color: white;
+	font-weight: bold;
+	float: right;
+	font-size: 22px;
+	line-height: 20px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+/* Hover effect for close button */
+.closebtn:hover {
+	color: black;
+}
 </style>
+
 </head>
 <body>
 	<header>
@@ -148,14 +178,25 @@ label, input {
 
 	<center>
 		<%
-		Object msg = request.getAttribute("message");
-		if (msg != null) {
-			out.println(msg.toString());
+		String message = (String) request.getAttribute("message");
+		%>
+
+		<%-- Check if the message is not null --%>
+		<%
+		if (message != null && !message.isEmpty()) {
+		%>
+		<script>
+            // Display the message in an alert box
+            alert("<%=message%>
+			");
+		</script>
+		<%
 		}
 		%>
+
 		<div class="top">
-			<a href="./userLogin.jsp" id="back"><i class="fa-solid fa-circle-left fa-lg" 
-			aria-hidden="true"></i></a> 
+			<a href="./userLogin.jsp" id="back"><i
+				class="fa-solid fa-circle-left fa-lg" aria-hidden="true"></i></a>
 		</div>
 
 		<h1 id="my-head">User Registration</h1>
@@ -165,40 +206,49 @@ label, input {
 			<br>
 			<form action="register" method="post">
 				<div>
-					<label><i class="fa-solid fa-user fa-lg" id="user"></i></label> <input type="text" name="userName" placeholder="Name"
-						class="search-input">
-				</div>
-				<br>
-				
-				<div>
-					<label><i class="fa-solid fa-envelope fa-lg" id="email"></i></label> <input type="email" name="userEmail" placeholder="Email"
-						class="search-input">
-				</div>
-				<br>
-				
-				<div>
-					<label><i class="fa-solid fa-lock fa-lg" id="pwd1"></i></label> <input type="password" name="userPwd1" placeholder="password"
-						class="search-input">
+					<label><i class="fa-solid fa-user fa-lg" id="user"></i></label> <input
+						type="text" name="userName" placeholder="Name"
+						class="search-input" required pattern="[A-Za-z0-9]{3,10}">
 				</div>
 				<br>
 
 				<div>
-					<label><i class="fa-solid fa-unlock-keyhole fa-lg" id="pwd2"></i></label>
-					<input type="password" name="userPwd2" placeholder="Repeat your password"
-						class="search-input">
+					<label><i class="fa-solid fa-envelope fa-lg" id="email"></i></label>
+					<input type="email" name="userEmail" placeholder="Email"
+						class="search-input" required
+						pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
 				</div>
 				<br>
 
 				<div>
-					<label><i class="fa-solid fa-phone fa-lg" id="contact"></i></label> <input type="tel" name="userContact"placeholder="Contact Number"
-						class="search-input">
+					<label><i class="fa-solid fa-lock fa-lg" id="pwd1"></i></label> <input
+						type="password" name="userPwd1"
+						placeholder="password  (min-6 char, at least one digit)"
+						class="search-input" required pattern="(?=.*\d).{6,}">
+				</div>
+				<br>
+
+				<div>
+					<label><i class="fa-solid fa-unlock-keyhole fa-lg"
+						id="pwd2"></i></label> <input type="password" name="userPwd2"
+						placeholder="Repeat your password" class="search-input" required
+						pattern="(?=.*\d).{6,}">
+				</div>
+				<br>
+
+				<div>
+					<label><i class="fa-solid fa-phone fa-lg" id="contact"></i></label>
+					<input type="tel" name="userContact" placeholder="Contact Number"
+						class="search-input" required>
 				</div>
 				<br> <br>
 				<button type="submit" class="submit-button">Register</button>
 			</form>
 
+
 		</div>
 	</center>
+
 
 </body>
 </html>

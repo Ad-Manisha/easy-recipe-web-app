@@ -12,9 +12,9 @@ import com.easy_recipe.dao.RecipeDao;
 import com.easy_recipe.models.Recipe;
 
 public class AddRecipeController extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	RecipeDao dao = null;
 
 	public AddRecipeController() {
@@ -24,7 +24,7 @@ public class AddRecipeController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		String recipeName = request.getParameter("recipeName");
 		String imageUrl = request.getParameter("imageUrl");
 		String recipeDescription = request.getParameter("recipeDescription");
@@ -33,10 +33,10 @@ public class AddRecipeController extends HttpServlet {
 		String ingredientsName = request.getParameter("ingredientsName");
 		String instructions = request.getParameter("instructions");
 		String youtubeLink = request.getParameter("youtubeLink");
-		
 
-		Recipe recipe = new Recipe(recipeName,imageUrl,recipeDescription,recipeTime,recipeCategory,ingredientsName, instructions, youtubeLink);
-		int result =RecipeDao.addRecipe(recipe);
+		Recipe recipe = new Recipe(recipeName, imageUrl, recipeDescription, recipeTime, recipeCategory, ingredientsName,
+				instructions, youtubeLink);
+		int result = RecipeDao.addRecipe(recipe);
 
 		if (result == 1) {
 			request.setAttribute("message", "New Recipe Inserted Successfully!");

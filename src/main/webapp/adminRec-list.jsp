@@ -165,9 +165,9 @@ p {
 
 	<div class="search-container">
 		<form action="search" method="post">
-			<input type="text" class="search-input" placeholder="Search..ingredients.."
-				name="ingredient"> <input type="submit"
-				class="search-button" />
+			<input type="text" class="search-input"
+				placeholder="Search..ingredients.." name="ingredient"> <input
+				type="submit" class="search-button" />
 		</form>
 	</div>
 

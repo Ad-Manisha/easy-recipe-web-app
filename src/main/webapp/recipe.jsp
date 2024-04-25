@@ -48,74 +48,80 @@ nav {
 	color: #5b79bd;
 }
 
-
-.container{
+.container {
 	max-width: 800px;
 	margin: 0 auto;
 	padding: 0;
 }
-h1{
-	text-align:center;
+
+h1 {
+	text-align: center;
 	color: #444;
 }
-h3{
+
+h3 {
 	color: #444;
 }
-#desc{
-	text-align:justify;
+
+#desc {
+	text-align: justify;
 	color: #444;
 }
+
 #image {
 	border-top-right-radius: 7px;
 	border-top-left-radius: 7px;
 	border-bottom-right-radius: 7px;
 	border-bottom-left-radius: 7px;
-  	display: block;
-  	margin-left: auto;
-  	margin-right: auto;
-  	width: 75%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 75%;
 }
 
 .recipe {
 	background-color: #fff;
+	height : 600px;
 	border-radius: 5px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	padding: 20px;
 	margin-bottom: 20px;
 }
 
-.ingredient-list{
+.ingredient-list {
 	margin-bottom: 10px;
 }
+
 .instructions {
 	margin-bottom: 20px;
 }
-#time{
+
+#time {
 	font: 10px;
-	color:#444;
-	
-}
-#category{
-	font: 15px;
-	color:green;
+	color: #444;
 }
 
-#yt{
+#category {
+	font: 15px;
+	color: green;
+}
+
+#yt {
 	color: #31708f;
 	margin-left: 17rem;
 }
+
 #yt-link {
 	color: #31708f;
 	text-decoration: none;
 	font-weight: bold;
-	padding:3px;
+	padding: 3px;
 	margin-right: 10rem;
 }
 
 #yt-link:hover {
 	text-decoration: underline;
 }
-
 </style>
 </head>
 <body>
@@ -127,35 +133,44 @@ h3{
 
 	<div class="main-body">
 		<div class="container">
-		
-			<h1>Recipe: <c:out value="${recipe.recipeName}" /></h1>
-			<img src="<c:out value="${recipe.imageUrl}" />"id="image" class="center" />
-			<br>
-			<h3 id = "desc"><c:out value="${recipe.recipeDescription}" /></h3>
+
+			<h1>
+				Recipe:
+				<c:out value="${recipe.recipeName}" />
+			</h1>
+			<img src="<c:out value="${recipe.imageUrl}" />" id="image"
+				class="center" /> <br>
+			<h3 id="desc">
+				<c:out value="${recipe.recipeDescription}" />
+			</h3>
 			<h5 id="time">
-					<i class="fa-solid fa-clock fa-lg"></i> : <c:out value="${recipe.recipeTime}" />
+				<i class="fa-solid fa-clock fa-lg"></i> :
+				<c:out value="${recipe.recipeTime}" />
 			</h5>
 
-			<h5 id="category">Category: <c:out value="${recipe.recipeCategory}" /></h5>
-			
+			<h5 id="category">
+				Category:
+				<c:out value="${recipe.recipeCategory}" />
+			</h5>
+
 
 			<div class="recipe">
-			
+
 				<h3>Ingredients</h3>
+				<br>
 				<ul class="ingredient-list">
 					<c:out value="${recipe.ingredientsName}" />
 				</ul>
-				
-				
+				<br><br>
+
 				<h3>Instructions</h3>
+				<br>
 				<ol class="instructions">
 					<c:out value="${recipe.instructions}" />
-				</ol>	
-				
+				</ol>
+				<br><br><br>
 				<i class="fa-brands fa-youtube fa-lg" id="yt"></i><a id="yt-link"
-					href="<c:out value="${recipe.youtubeLink}" />">video link to youtube</a>
+					href="<c:out value="${recipe.youtubeLink}" />">video link to
+					youtube</a>
+			</div>
 		</div>
-	</div>	
-
-
-			

@@ -98,8 +98,9 @@ nav a:hover, .my-btn:hover {
 p {
 	text-align: right;
 }
+
 #my-head {
-	margin-left:600px;
+	margin-left: 600px;
 	color: #2e4578;
 }
 </style>
@@ -119,9 +120,9 @@ p {
 		</nav>
 	</header>
 
-<h1 id="my-head">Search Results</h1>
+	<h1 id="my-head">Search Results</h1>
 	<div class="main-body">
-		
+
 		<c:forEach items="${recipes}" var="recipe">
 			<div class="card">
 				<a href="recipes?id=<c:out value='${recipe.recipeId}'/>"> <img

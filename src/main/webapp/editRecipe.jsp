@@ -5,7 +5,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>New Contact</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+	integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<title>Update Recipe</title>
 <style>
 body {
 	font-family: Arial, sans-serif;
@@ -21,6 +26,23 @@ header {
 	padding: 20px;
 	background-color: tomato;
 	color: #fff;
+}
+
+.top {
+	display: flex;
+	align-items: center;
+}
+
+#back {
+	margin-top: 30px;
+	margin-left: 80px;
+	color: #2e4578;
+	font-weight: bold;
+	transition: color 0.3s ease-in-out;
+}
+
+#back:hover {
+	color: #5b79bd;
 }
 
 .my-div {
@@ -105,7 +127,7 @@ label, input {
 	margin-left: 150px;
 }
 
-#desc,#ingredientName, #instruction, #link {
+#desc, #ingredientName, #instruction, #link {
 	margin-left: 10px;
 }
 </style>
@@ -123,12 +145,20 @@ label, input {
 	</header>
 
 	<center>
-		<%
-		Object msg = request.getAttribute("message");
-		if (msg != null) {
-			out.println(msg.toString());
-		}
-		%>
+		<% String message = (String)request.getAttribute("message"); %>
+
+			<%-- Check if the message is not null --%>
+			<% if (message != null && !message.isEmpty()) { %>
+			<script>
+            // Display the message in an alert box
+            alert("<%= message %>");
+        </script>
+			<% } %>
+			
+			<div class="top">
+			<a href="adminRec-list" id="back"><i
+				class="fa-solid fa-circle-left fa-lg" aria-hidden="true"></i></a>
+		</div>
 
 		<h1 id="my-head">Update Recipe</h1>
 
@@ -156,14 +186,14 @@ label, input {
 				<br>
 				<div>
 					<label>Ingredients :</label>
-						<textarea rows="3" cols="6" name="ingredientsName"
+					<textarea rows="3" cols="6" name="ingredientsName"
 						class="search-input" id="ingredientName"><c:out
 							value='${recipe.ingredientsName}'></c:out></textarea>
 				</div>
 				<br>
 				<div>
 					<label>Description :</label>
-						<textarea rows="3" cols="6" name="recipeDescription"
+					<textarea rows="3" cols="6" name="recipeDescription"
 						class="search-input" id="desc"><c:out
 							value='${recipe.recipeDescription}'></c:out></textarea>
 				</div>
@@ -177,12 +207,12 @@ label, input {
 				<br>
 				<div>
 					<label>Instructions :</label>
-						<textarea rows="3" cols="6" name="instructions"
+					<textarea rows="3" cols="6" name="instructions"
 						class="search-input" id="instruction"><c:out
 							value='${recipe.instructions}'></c:out></textarea>
 				</div>
 				<br>
-				
+
 				<div>
 					<label>Recipe Category :</label> <input type="text"
 						name="recipeCategory" class="search-input"
@@ -190,12 +220,10 @@ label, input {
 				</div>
 				<div>
 					<label>Youtube Link :</label>
-						<textarea rows="3" cols="6" name="youtubeLink"
-						class="search-input" id="link"><c:out
-							value='${recipe.youtubeLink}'></c:out></textarea>
+					<textarea rows="3" cols="6" name="youtubeLink" class="search-input"
+						id="link"><c:out value='${recipe.youtubeLink}'></c:out></textarea>
 				</div>
-				<br>
-				<br> <br>
+				<br> <br> <br>
 				<button type="submit" class="submit-button">Update</button>
 			</form>
 

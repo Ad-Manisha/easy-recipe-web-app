@@ -27,6 +27,23 @@ header {
 	color: #fff;
 }
 
+.top {
+	display: flex;
+	align-items: center;
+}
+
+#back {
+	margin-top: 30px;
+	margin-left: 80px;
+	color: #2e4578;
+	font-weight: bold;
+	transition: color 0.3s ease-in-out;
+}
+
+#back:hover {
+	color: #5b79bd;
+}
+
 .my-div {
 	height: 550px;
 	width: 350px;
@@ -109,10 +126,11 @@ label, input {
 	color: #2e4578;
 }
 
-#desc,#ingredients {
+#desc, #ingredients {
 	margin-left: 10px;
 }
-#name,#image,#comment,#time,#ingredient,#link,#instruction{
+
+#name, #image, #comment, #time, #ingredient, #link, #instruction {
 	color: #2e4578;
 	font-weight: bold;
 	transition: color 0.3s ease-in-out;
@@ -132,13 +150,20 @@ label, input {
 	</header>
 
 	<center>
-		<%
-		Object msg = request.getAttribute("message");
-		if (msg != null) {
-			out.println(msg.toString());
-		}
-		%>
+		<% String message = (String)request.getAttribute("message"); %>
 
+			<%-- Check if the message is not null --%>
+			<% if (message != null && !message.isEmpty()) { %>
+			<script>
+            // Display the message in an alert box
+            alert("<%= message %>");
+        </script>
+			<% } %>
+		<div class="top">
+			<a href="adminRec-list" id="back"><i
+				class="fa-solid fa-circle-left fa-lg" aria-hidden="true"></i></a>
+		</div>
+		
 		<h1 id="my-head">Create New Recipe</h1>
 
 
@@ -146,50 +171,55 @@ label, input {
 			<br>
 			<form action="addRecipe" method="post">
 				<div>
-					<label><i class="fa-solid fa-utensils fa-lg" id="name"></i></label> <input type="text" name="recipeName"
-						class="search-input" placeholder="Recipe Name">
+					<label><i class="fa-solid fa-utensils fa-lg" id="name"></i></label>
+					<input type="text" name="recipeName" class="search-input"
+						placeholder="Recipe Name">
 				</div>
 				<br>
 				<div>
-					<label><i class="fa-solid fa-image fa-lg" id="image" ></i></label> <input type="text" name="imageUrl"
-						class="search-input"  placeholder="Image URl">
+					<label><i class="fa-solid fa-image fa-lg" id="image"></i></label>
+					<input type="text" name="imageUrl" class="search-input"
+						placeholder="Image URl">
 				</div>
 				<br>
 				<div>
-					<label><i class="fa-solid fa-bowl-food fa-lg" id="ingredient"></i></label>
+					<label><i class="fa-solid fa-bowl-food fa-lg"
+						id="ingredient"></i></label>
 					<textarea rows="3" cols="6" name="ingredientsName"
-						class="search-input" id="ingredients"  placeholder="Ingredients"></textarea>
+						class="search-input" id="ingredients" placeholder="Ingredients"></textarea>
 				</div>
 				<br>
 				<div>
 					<label><i class="fa-solid fa-comment fa-lg" id="comment"></i></label>
 					<textarea rows="3" cols="6" name="recipeDescription"
-						class="search-input" id="desc"  placeholder="Description"></textarea>
+						class="search-input" id="desc" placeholder="Description"></textarea>
 				</div>
 				<br>
 
 				<div>
-					<label><i class="fa-solid fa-clock fa-lg" id="time"></i></label> <input type="text" name="recipeTime"
-						class="search-input"  placeholder="Time">
+					<label><i class="fa-solid fa-clock fa-lg" id="time"></i></label> <input
+						type="text" name="recipeTime" class="search-input"
+						placeholder="Time">
 				</div>
 				<br>
 				<div>
-					<label><i class="fa-solid fa-comment fa-lg" id="instruction"></i></label>
+					<label><i class="fa-solid fa-comment fa-lg"
+						id="instruction"></i></label>
 					<textarea rows="6" cols="12" name="instructions"
-						class="search-input" id="instructions"  placeholder="Instructions"></textarea>
+						class="search-input" id="instructions" placeholder="Instructions"></textarea>
 				</div>
 				<br>
 				<div>
 					<label><i class="fa-solid fa-link fa-lg" id="link"></i></i></label>
-					<textarea rows="3" cols="6" name="youtubeLink"
-						class="search-input" id="links"  placeholder="Youtube Link"></textarea>
+					<textarea rows="3" cols="6" name="youtubeLink" class="search-input"
+						id="links" placeholder="Youtube Link"></textarea>
 				</div>
 				<br>
-				
+
 				<div>
 					<label>Category:</label> <select name="recipeCategory">
-						<option value="1">Veg</option>
-						<option value="2">Non-Veg</option>
+						<option value="Veg">Veg</option>
+						<option value="Non-Veg">Non-Veg</option>
 					</select>
 				</div>
 				<br> <br>

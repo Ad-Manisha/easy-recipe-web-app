@@ -58,8 +58,6 @@ nav a:hover, .my-btn:hover {
 #my-head {
 	margin-left: 150px;
 }
-
-
 </style>
 </head>
 <body>
@@ -70,7 +68,9 @@ nav a:hover, .my-btn:hover {
 			<h1>Easy Recipe</h1>
 		</div>
 		<nav>
-			<a href="./index.jsp">Home</a> <a href="adminRec-list">Update</a> <a href="RecipeList">Recipes</a> <a href="./viewComments.jsp">View Comments</a>
+			<a href="./index.jsp">Home</a> <a href="adminRec-list">Update</a> <a
+				href="RecipeList">Recipes</a> <a href="./viewComments.jsp">View
+				Comments</a>
 		</nav>
 	</header>
 
