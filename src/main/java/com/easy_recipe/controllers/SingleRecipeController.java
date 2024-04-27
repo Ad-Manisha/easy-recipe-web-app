@@ -24,6 +24,12 @@ public class SingleRecipeController extends HttpServlet {
 		String id = request.getParameter("id");
 		Recipe r = dao.getRecipe(Integer.parseInt(id));
 
+		
+		System.out.println(r.getInstructions());
+		String[] arr = r.getInstructions().split("\\. ");		
+		request.setAttribute("steps", arr);
+		
+		
 		request.setAttribute("recipe", r);
 		RequestDispatcher rd = request.getRequestDispatcher("recipe.jsp");
 		rd.forward(request, response);

@@ -81,7 +81,7 @@ h3 {
 
 .recipe {
 	background-color: #fff;
-	height : 600px;
+	height: 800px;
 	border-radius: 5px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	padding: 20px;
@@ -161,16 +161,29 @@ h3 {
 				<ul class="ingredient-list">
 					<c:out value="${recipe.ingredientsName}" />
 				</ul>
-				<br><br>
+				<br>
+				<br>
 
 				<h3>Instructions</h3>
 				<br>
 				<ol class="instructions">
-					<c:out value="${recipe.instructions}" />
+					<!--<c:out value="${recipe.instructions}" />-->
+
+
+					<% String[] arr = (String[])request.getAttribute("steps");
+					
+						for(String s:arr){
+							%>
+					<li><%= s %></li>
+					<% } %>
+
+
+
 				</ol>
-				<br><br><br>
-				<i class="fa-brands fa-youtube fa-lg" id="yt"></i><a id="yt-link"
-					href="<c:out value="${recipe.youtubeLink}" />">video link to
-					youtube</a>
+				<br>
+				<br>
+				<br> <i class="fa-brands fa-youtube fa-lg" id="yt"></i><a
+					id="yt-link" href="<c:out value="${recipe.youtubeLink}" />">video
+					link to youtube</a>
 			</div>
 		</div>

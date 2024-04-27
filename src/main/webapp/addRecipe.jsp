@@ -9,7 +9,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 	integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
-<title>New Contact</title>
+<title>New Recipe</title>
 <style>
 body {
 	font-family: Arial, sans-serif;
@@ -152,18 +152,18 @@ label, input {
 	<center>
 		<% String message = (String)request.getAttribute("message"); %>
 
-			<%-- Check if the message is not null --%>
-			<% if (message != null && !message.isEmpty()) { %>
-			<script>
+		<%-- Check if the message is not null --%>
+		<% if (message != null && !message.isEmpty()) { %>
+		<script>
             // Display the message in an alert box
             alert("<%= message %>");
         </script>
-			<% } %>
+		<% } %>
 		<div class="top">
 			<a href="adminRec-list" id="back"><i
 				class="fa-solid fa-circle-left fa-lg" aria-hidden="true"></i></a>
 		</div>
-		
+
 		<h1 id="my-head">Create New Recipe</h1>
 
 
@@ -177,8 +177,8 @@ label, input {
 				</div>
 				<br>
 				<div>
-					<label><i class="fa-solid fa-image fa-lg" id="image"></i></label>
-					<input type="text" name="imageUrl" class="search-input"
+					<label><i class="fa-solid fa-image fa-lg" id="image"></i></label> <input
+						type="text" name="imageUrl" class="search-input"
 						placeholder="Image URl">
 				</div>
 				<br>
