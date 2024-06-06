@@ -7,64 +7,99 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+	integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
 body {
-	margin: 0;
-	padding: 0;
+	margin: 0px;
+	padding: 0px;
 }
 
 .main-body {
+	padding: 0px;
 	display: flex;
 	flex-wrap: wrap;
 	font-family: Arial, sans-serif;
-	background-color: #f4f4f4;
-	margin: 0;
-	padding: 0;
+	background: white;
 }
 
-header {
+section {
+	width: 100%;
+	height: 14vh;
+}
+
+section nav {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	align-items: center;
-	padding: 20px;
-	background-color: tomato;
-	color: #fff;
+	position: fixed;
+	right: 0;
+	left: 0;
+	background: white;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	z-index: 1000;
 }
 
-.logo {
-	display: flex;
-	align-items: center;
+section nav .logo img {
+	width: 110px;
+	cursor: pointer;
+	margin: 7px 0;
 }
 
-.logo img {
-	width: 40px;
-	height: 40px;
-	margin-right: 10px;
+section nav ul {
+	list-style: none;
 }
 
-nav {
-	display: flex;
-	align-items: center;
-}
-
-nav a {
-	text-decoration: none;
-	color: #fff;
+section nav ul li {
+	display: inline-block;
 	margin: 0 15px;
-	font-weight: bold;
-	transition: color 0.3s ease-in-out;
 }
 
-nav a:hover, .my-btn:hover {
-	color: #20353b;
+section nav ul li a {
+	text-decoration: none;
+	color: #000;
+	font-weight: 500;
+	font-size: 17px;
+	transition: 0.1s;
+}
+
+section nav ul li a::after {
+	content: '';
+	width: 0;
+	height: 2px;
+	background: #fac031;
+	display: block;
+	transition: 0.2s linear;
+}
+
+section nav ul li a:hover::after {
+	width: 100%;
+}
+
+section nav ul li a:hover {
+	color: #fac031;
+}
+
+section nav .icon i {
+	font-size: 18px;
+	color: #000;
+	margin: 0 5px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+section nav .icon i:hover {
+	color: #fac031;
 }
 
 .search-container {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: #f4f4f4;
-	height: 10vh;
+	background: white;
+	height: 20vh;
 }
 
 .search-input {
@@ -75,75 +110,180 @@ nav a:hover, .my-btn:hover {
 }
 
 .search-button {
-	background-color: tomato;
+	background-color: #fac031;
 	color: #fff;
 	padding: 10px 15px;
-	border: 1px solid tomato;
+	border: 1px;
 	border-radius: 0 4px 4px 0;
 	cursor: pointer;
 	font-size: 16px;
 }
 
 .search-button:hover {
-	background-color: #f55e07;
-	border-color: #bf2b0b;
+	background-color: green;
 }
 
-.card {
-	border: 1px solid #ddd;
-	border-radius: 8px;
-	margin: 20px;
-	overflow: hidden;
-	transition: box-shadow 0.3s;
-	width: 313px;
-	height: 400px;
-	background-color: #fff;
+.menu {
+	width: 100%;
+	padding: 70px 0;
 }
 
-.card:hover {
+.menu h1 {
+	font-size: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 25px;
+	margin-top: -30px;
+}
+
+.menu h1 span {
+	color: #fac031;
+	margin-left: 15px;
+	font-family: mv boli;
+}
+
+.menu h1 span::after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: #fac031;
+	display: block;
+	position: relative;
+	bottom: 15px;
+}
+
+.menu .menu_box {
+	width: 95%;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-gap: 15px;
+}
+
+.menu .menu_box .menu_card {
+	width: 325px;
+	height: 480px;
+	padding-top: 10px;
+	margin-bottom: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.menu .menu_box .menu_card:hover {
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.card img {
+.menu .menu_box .menu_card .menu_image {
+	width: 300px;
+	height: 245px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.menu .menu_box .menu_card .menu_image img {
 	width: 100%;
-	height: 200px;
+	height: 100%;
 	object-fit: cover;
+	object-position: center;
+	transition: 0.3s;
 }
 
-.card-content {
-	padding: 15px;
+.menu .menu_box .menu_card .menu_image:hover img {
+	transform: scale(1.1);
 }
 
-.card-title {
-	font-size: 1.25rem;
-	margin-bottom: 0.75rem;
+.menu .menu_box .menu_card .small_card {
+	width: 45px;
+	height: 50px;
+	float: right;
+	position: relative;
+	top: -240px;
+	right: -8px;
+	opacity: 0;
+	border-radius: 7px;
+	transition: 0.3s;
 }
 
-.card-text {
-	color: #666;
-	text-align: left;
+.menu .menu_box .menu_card:hover .small_card {
+	position: relative;
+	top: -240px;
+	right: 20px;
+	opacity: 1;
 }
 
-p {
-	text-align: right;
+.menu .menu_box .menu_card .small_card i {
+	font-size: 25px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 50px;
+	color: #000;
+	cursor: pointer;
+	text-shadow: 0 0 6px #000;
+	transition: 0.2s;
+}
+
+.menu .menu_box .menu_card .small_card i:hover {
+	color: #fac031;
+}
+
+.menu .menu_box .menu_card .menu_info h2 {
+	width: 60%;
+	text-align: center;
+	margin: 10px auto 10px auto;
+	font-size: 25px;
+	color: black;
+}
+
+.menu .menu_box .menu_card .menu_info p {
+	text-align: center;
+	margin-top: 8px;
+	line-height: 25px;
+}
+
+.menu .menu_box .menu_card .menu_info .menu_icon_star {
+	color: #fac031;
+	text-align: center;
+	margin: 10px 0 10px 0;
+}
+
+.menu .menu_box .menu_card .menu_info .menu_icon_feedback {
+	color: #040505;
+	text-align: center;
+	margin: 12px 0 5px 0;
+	padding: 18px;
+}
+
+.menu .menu_box .menu_card .menu_info .menu_icon_feedback:hover {
+	cursor: pointer;
+	transition: 0.3s;
+	color:blue;
 }
 </style>
 <title>Recipe List</title>
 </head>
 <body>
 
-	<header>
-		<div class="logo">
-			<img alt="Easy-Recipe Logo"
-				src="data:image/jpeg;base64,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">
-			<h1>Easy Recipe</h1>
-		</div>
+	<section>
 		<nav>
-			<a href="./index.jsp">Home</a> <a href="./adminLogin.jsp">Modify</a>
-			<a href="./userLogin.jsp">Feedback</a>
+			<div class=" logo">
+				<img src=".\Image\logo.png">
+
+			</div>
+
+			<ul>
+				<li><a href="./index.jsp">Home</a></li>
+				<li><a href="./adminLogin.jsp">Modify</a></li>
+				<li><a href="gallery">Gallery</a></li>
+			</ul>
+
+			<div class="icon">
+				<i class="fa-solid fa-heart"></i>
+			</div>
 
 		</nav>
-	</header>
+
+	</section>
 
 	<div class="search-container">
 		<form action="search" method="post">
@@ -154,25 +294,47 @@ p {
 
 	</div>
 
-	<div class="main-body">
-		<c:forEach items="${recipeList}" var="recipe">
-			<div class="card">
-				<a href="recipes?id=<c:out value='${recipe.recipeId}'/>"> <img
-					src="<c:out value="${recipe.imageUrl}"/>" />
-				</a>
+	<div class="menu" id="Menu">
+		<h1>
+			Our <span>Menu</span>
+		</h1>
+		<div class="menu_box">
+			<c:forEach items="${recipeList}" var="recipe">
+				<div class="menu_card">
+					<div class="menu_image">
+						<a href="recipes?id=<c:out value='${recipe.recipeId}'/>"> <img
+							src="<c:out value="${recipe.imageUrl}"/>" />
+						</a>
+					</div>
 
-				<div class="card-content">
-					<h5 class="card-title">
-						<c:out value="${recipe.recipeName}" />
-					</h5>
-					<p class="card-text">
-						<c:out value="${recipe.recipeDescription}" />
-					</p>
+					<div class="small_card">
+						<i class="fa-solid fa-heart"></i>
+					</div>
+
+					<div class="menu_info">
+						<h2>
+							<c:out value="${recipe.recipeName}" />
+						</h2>
+						<p>
+							<c:out value="${recipe.recipeDescription}" />
+						</p>
+						<div class="menu_icon_star">
+							<i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
+							<i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
+							<i class="fa-solid fa-star-half-stroke"></i>
+						</div>
+						<div class="menu_icon_feedback">
+							<a href="./userLogin.jsp"><i class="fa-regular fa-thumbs-up fa-2x "></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href="./userLogin.jsp"><i  class="fa-regular fa-thumbs-down fa-2x "></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href="./userLogin.jsp"><i
+								class="fa-regular fa-comment fa-2x "></i></a>
+						</div>
+
+					</div>
 				</div>
-			</div>
-		</c:forEach>
+			</c:forEach>
 
+		</div>
 	</div>
-
 </body>
 </html>

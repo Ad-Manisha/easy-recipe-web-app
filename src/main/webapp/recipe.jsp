@@ -19,33 +19,77 @@ body {
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden;
-	background-color: #f4f4f4;
+	background: white;
 	font-family: Arial, sans-serif;
 }
 
-nav {
+section {
+	width: 100%;
+	height: 14vh;
+}
+
+section nav {
 	display: flex;
+	justify-content: space-around;
 	align-items: center;
+	position: fixed;
+	right: 0;
+	left: 0;
+	background: white;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	z-index: 1000;
 }
 
-#home {
-	margin-top: 30px;
-	margin-left: 40px;
-	color: #2e4578;
-	font-weight: bold;
-	transition: color 0.3s ease-in-out;
+section nav .logo img {
+	width: 110px;
+	cursor: pointer;
+	margin: 7px 0;
 }
 
-#foods {
-	margin-top: 30px;
-	margin-left: 70px;
-	color: #2e4578;
-	font-weight: bold;
-	transition: color 0.3s ease-in-out;
+section nav ul {
+	list-style: none;
 }
 
-#home:hover, #foods:hover {
-	color: #5b79bd;
+section nav ul li {
+	display: inline-block;
+	margin: 0 15px;
+}
+
+section nav ul li a {
+	text-decoration: none;
+	color: #000;
+	font-weight: 500;
+	font-size: 17px;
+	transition: 0.1s;
+}
+
+section nav ul li a::after {
+	content: '';
+	width: 0;
+	height: 2px;
+	background: #fac031;
+	display: block;
+	transition: 0.2s linear;
+}
+
+section nav ul li a:hover::after {
+	width: 100%;
+}
+
+section nav ul li a:hover {
+	color: #fac031;
+}
+
+section nav .icon i {
+	font-size: 18px;
+	color: #000;
+	margin: 0 5px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+section nav .icon i:hover {
+	color: #fac031;
 }
 
 .container {
@@ -80,12 +124,16 @@ h3 {
 }
 
 .recipe {
-	background-color: #fff;
+	background-color: #fffdfd;
 	height: 800px;
 	border-radius: 5px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	padding: 20px;
 	margin-bottom: 20px;
+}
+
+.recipe:hover {
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .ingredient-list {
@@ -125,11 +173,27 @@ h3 {
 </style>
 </head>
 <body>
-	<nav>
-		<a href="./index.jsp" id="home"><i class="fa-solid fa-house fa-lg"
-			aria-hidden="true"></i></a> <a href="RecipeList" id="foods"><i
-			class="fa-solid fa-utensils fa-lg" aria-hidden="true"></i></a>
-	</nav>
+	<section>
+		<nav>
+			<div class=" logo">
+				<img src=".\Image\logo.png">
+
+			</div>
+
+			<ul>
+				<li><a href="./index.jsp">Home</a></li>
+				<li><a href="RecipeList">Recipes</a></li>
+				<li><a href="./adminLogin.jsp">Modify</a></li>
+				<li><a href="#Gallery">Gallery</a></li>
+			</ul>
+
+			<div class="icon">
+				<i class="fa-solid fa-heart"></i>
+			</div>
+
+		</nav>
+
+	</section>
 
 	<div class="main-body">
 		<div class="container">
@@ -161,8 +225,7 @@ h3 {
 				<ul class="ingredient-list">
 					<c:out value="${recipe.ingredientsName}" />
 				</ul>
-				<br>
-				<br>
+				<br> <br>
 
 				<h3>Instructions</h3>
 				<br>
@@ -180,10 +243,9 @@ h3 {
 
 
 				</ol>
-				<br>
-				<br>
-				<br> <i class="fa-brands fa-youtube fa-lg" id="yt"></i><a
-					id="yt-link" href="<c:out value="${recipe.youtubeLink}" />">video
-					link to youtube</a>
+				<br> <br> <br> <i class="fa-brands fa-youtube fa-lg"
+					id="yt"></i><a id="yt-link"
+					href="<c:out value="${recipe.youtubeLink}" />">video link to
+					youtube</a>
 			</div>
 		</div>

@@ -94,6 +94,18 @@
 		<description></description>
 		<servlet-class>com.easy_recipe.controllers.AdminLogoutController</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>GalleryController</servlet-name>
+		<display-name>GalleryController</display-name>
+		<description></description>
+		<servlet-class>com.easy_recipe.controllers.GalleryController</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>LikesController</servlet-name>
+		<display-name>LikesController</display-name>
+		<description></description>
+		<servlet-class>com.easy_recipe.controllers.LikesController</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>RecipeListController</servlet-name>
 		<url-pattern>/RecipeList</url-pattern>
@@ -153,6 +165,14 @@
 	<servlet-mapping>
 		<servlet-name>AdminLogoutController</servlet-name>
 		<url-pattern>/adminLogout</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GalleryController</servlet-name>
+		<url-pattern>/gallery</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LikesController</servlet-name>
+		<url-pattern>/likes</url-pattern>
 	</servlet-mapping>
 
 	<error-page>

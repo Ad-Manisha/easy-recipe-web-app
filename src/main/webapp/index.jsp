@@ -1,184 +1,825 @@
-<html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
+
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Easy-Recipe-Home</title>
-<style type="text/css">
-body {
-	width: 100%;
-	height: 100%;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EasyRecipe</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+	integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<style>
+* {
 	margin: 0;
 	padding: 0;
-	overflow-x: hidden;
-	background-color: #e6edf7;
-	font-family: Arial, sans-serif;
+	box-sizing: border-box;
+	font-family: sans-serif;
 }
 
-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 20px;
-	background-color: tomato;
-	color: #fff;
+html {
+	scroll-behavior: smooth;
 }
 
-.logo {
-	display: flex;
-	align-items: center;
-}
-
-.logo img {
-	width: 40px;
-	height: 40px;
-	margin-right: 10px;
-}
-
-nav {
-	display: flex;
-	align-items: center;
-}
-
-nav a {
-	text-decoration: none;
-	color: #fff;
-	margin: 0 15px;
-	font-weight: bold;
-	transition: color 0.3s ease-in-out;
-}
-
-nav a:hover, .my-btn:hover {
-	color: #20353b;
-}
-
-main {
-	margin: 10px;
-	background:
-		url('https://assets.architecturaldigest.in/photos/6385cf3311f0276636badfb6/16:9/w_2560%2Cc_limit/DSC_8367-Edit-W.png')
-		no-repeat scroll center;
+section {
+	width: 100%;
 	height: 100vh;
-	background-size: cover;
-	color: #fff;
 }
 
-.wrapper {
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.4);
-	color: #fff;
-	margin: 10px 5px;
-}
-
-.content {
-	width: 100%;
-	position: relative;
-	top: 220px;
-	left: 350;
-	line-height: 1;
-}
-
-.my-head {
-	margin: 10 px;
-	line-height: 1 em;
-	font-size: 24 px;
-	font-weight: 400;
-}
-
-.btn {
-	width: 300px;
-	margin: 320px auto;
-}
-
-.my-btn {
-	background-color: tomato;
-	padding: 15px 30px;
-	font-size: 22px;
-	font-weight: bold;
-	color: #fff;
-	text-decoration: none;
-	border: 2px solid tomato;
-	border-radius: 5px;
-	cursor: pointer;
-	transition: background-color 0.3s ease-in-out;
-	text-align: left;
-}
-
-.section {
-	color: black;
-	position: absolute;
-	top: 910px;
-	left: 580;
-	line-height: 0.5;
-}
-
-.copyright {
-	color: white;
-	position: absolute;
-	top: 1100px;
-	line-height: 1.5;
-	background-color: #6f7070;
-	display: block;
-	width: 100%;
+section nav {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	position: fixed;
+	right: 0;
 	left: 0;
+	background: white;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	z-index: 1000;
+}
+
+section nav .logo img {
+	width: 110px;
+	cursor: pointer;
+	margin: 7px 0;
+}
+
+section nav ul {
+	list-style: none;
+}
+
+section nav ul li {
+	display: inline-block;
+	margin: 0 15px;
+}
+
+section nav ul li a {
+	text-decoration: none;
+	color: #000;
+	font-weight: 500;
+	font-size: 17px;
+	transition: 0.1s;
+}
+
+section nav ul li a::after {
+	content: '';
+	width: 0;
+	height: 2px;
+	background: #fac031;
+	display: block;
+	transition: 0.2s linear;
+}
+
+section nav ul li a:hover::after {
+	width: 100%;
+}
+
+section nav ul li a:hover {
+	color: #fac031;
+}
+
+section nav .icon i {
+	font-size: 18px;
+	color: #000;
+	margin: 0 5px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+section nav .icon i:hover {
+	color: #fac031;
+}
+
+section .main {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	position: relative;
+	top: 130px;
+}
+
+section .main .men_text h1 {
+	font-size: 60px;
+	position: relative;
+	top: -90px;
+	left: 20px;
+}
+
+section .main .men_text h1 span {
+	margin-left: 15px;
+	color: #fac031;
+	font-family: mv boli;
+	line-height: 22px;
+}
+
+section .main .main_image img {
+	width: 650px;
+	position: relative;
+	left: 70px;
+}
+
+section p {
+	width: 600px;
+	text-align: justify;
+	position: relative;
+	left: 55px;
+	bottom: 120px;
+	line-height: 22px;
+}
+
+section .main_btn {
+	background: #fac031;
+	position: relative;
+	left: 55px;
+	bottom: 65px;
+	width: 150px;
+	cursor: pointer;
+	padding: 12px 25px;
+}
+
+section .main_btn a {
+	color: #fff;
+	margin-right: 5px;
+	text-decoration: none;
+}
+
+section .main_btn i {
+	color: #fff;
+	transition: 0.3s;
+}
+
+section .main_btn:hover i {
+	transform: translateX(7px);
+}
+
+.about {
+	width: 100%;
+	height: 100vh;
+	padding: 70px 0;
+}
+
+.about .about_main {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.about .about_main .image img {
+	width: 800px;
+	height: 630px;
+	position: relative;
+	top: 60px;
+}
+
+.about .about_main .about_text h1 span {
+	color: #fac031;
+	margin-right: 15px;
+	font-family: mv boli;
+}
+
+.about .about_main .about_text h1 {
+	font-size: 55px;
+	position: relative;
+	bottom: 50px;
+}
+
+.about .about_main .about_text h3 {
+	font-size: 30px;
+	margin: 0 0 50px 0;
+}
+
+.about .about_main .about_text p {
+	width: 650px;
+	text-align: justify;
+	margin-right: 30px;
+	line-height: 22px;
+}
+
+.about .about_btn {
+	background: #fac031;
+	padding: 12px 25px;
+	text-decoration: none;
+	color: #fff;
+	position: relative;
+	left: 57%;
+	bottom: 70px;
+}
+
+.review {
+	width: 100%;
+	height: 100vh;
+	padding: 7px 0;
+}
+
+.review h1 {
+	font-size: 55px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.review h1 span {
+	margin-left: 15px;
+	color: #fac031;
+	font-family: mv boli;
+}
+
+.review h1 span::after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: #fac031;
+	position: relative;
+	bottom: 15px;
+	display: block;
+}
+
+.review .review_box {
+	width: 95%;
+	margin: 70px auto;
+	display: flex;
+}
+
+.review .review_box .review_card {
+	width: 350px;
+	height: 485px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+	border-radius: 8px;
+	padding: 8px 20px;
+	margin: 0 8px;
+}
+
+.review .review_box .review_card .review_profile {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	transition: 0.3s;
+}
+
+.review .review_box .review_card:hover .review_profile {
+	transform: translateY(-60px);
+}
+
+.review .review_box .review_card .review_profile img {
+	width: 180px;
+	height: 180px;
+	object-fit: cover;
+	object-position: center;
+	border-radius: 50%;
+	border: 5px solid #cccccc;
+}
+
+.review .review_box .review_card .review_text {
 	text-align: center;
 }
 
-p {
-	color: black;
-	font-size: 1rem;
+.review .review_box .review_card .review_text .name {
+	color: #000;
+	transition: 0.3s;
 }
 
-h2 {
-	font-size: 0.75rem bold;
-	margin-bottom: 0.75rem;
-	color: black;
+.review .review_box .review_card:hover .review_text .name {
+	transform: translateY(-50px);
+}
+
+.review .review_box .review_card .review_text .review_icon {
+	color: #fac031;
+	transition: 0.3s;
+}
+
+.review .review_box .review_card:hover .review_text .review_icon {
+	transform: translateY(-30px);
+}
+
+.review .review_box .review_card .review_text .review_social i {
+	margin: 5px 1px;
+	font-size: 15px;
+	opacity: 0;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.review .review_box .review_card:hover .review_text .review_social i {
+	opacity: 1;
+	transform: translateY(-8px);
+}
+
+.review .review_box .review_card .review_text p {
 	text-align: center;
+	line-height: 22px;
+	transition: 0.3s;
+}
+
+.review .review_box .review_card:hover .review_text p {
+	margin-top: 5px;
+}
+
+.team {
+	width: 100%;
+	height: 90vh;
+	background-size: cover;
+	background-position: center;
+}
+
+.team h1 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 55px;
+	margin-bottom: 30px;
+}
+
+.team h1 span {
+	color: #fac031;
+	margin-left: 15px;
+	font-family: mv boli;
+}
+
+.team h1 span::after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: #fac031;
+	display: block;
+	position: relative;
+	bottom: 15px;
+}
+
+.team .team_box {
+	width: 95%;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	top: 13%;
+}
+
+.team .team_box .profile {
+	width: 320px;
+	height: 320px;
+	border-radius: 50%;
+	margin: 0 15px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+	transition: 0.4s;
+}
+
+.team .team_box .profile:hover {
+	border-radius: 20px;
+	height: 320px;
+}
+
+.team .team_box .profile img {
+	width: 250px;
+	height: 250px;
+	object-fit: cover;
+	object-position: center;
+	border-radius: 50%;
+	cursor: pointer;
+	box-shadow: 0 0 8px rgba(0, 00, 0.5);
+	z-index: 2;
+	transition: 0.4s;
+}
+
+.team .team_box .profile:hover img {
+	border-radius: 20px;
+	margin-top: -230px;
+}
+
+.team .team_box .profile .info {
+	position: absolute;
+	text-align: center;
+	top: 25%;
+	transition: 0.4s;
+}
+
+.team .team_box .profile:hover .info {
+	top: 60%;
+}
+
+.team .team_box .profile .info .name {
+	color: #fac031;
+	margin-bottom: 15px;
+}
+
+.team .team_box .profile .info .bio {
+	width: 70%;
+	text-align: center;
+	margin: 0 auto 10px auto;
+}
+
+.team .team_box .profile .info .team_icon i {
+	margin: 10px 5px 5px 0;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.team .team_box .profile .info .team_icon i:hover {
+	color: #fac031;
+}
+
+footer {
+	width: 100%;
+	padding: 30px 0 0 20px;
+	background: #eeeeee;
+}
+
+footer .footer_main {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+footer .footer_main .footer_tag {
+	text-align: center;
+}
+
+footer .footer_main .footer_tag h2 {
+	color: #000;
+	margin-bottom: 25px;
+	font-size: 30px;
+}
+
+footer .footer_main .footer_tag p a {
+	margin: 10px 0;
+	text-decoration: none;
+	color: #000;
+}
+
+footer .footer_main .footer_tag i {
+	margin: 0 5px;
+	cursor: pointer;
+}
+
+footer .footer_main .footer_tag i:hover {
+	color: #fac031;
+}
+
+::-webkit-scrollbar {
+	width: 13px;
+}
+
+::webkit-scrollbar-track {
+	border-radius: 15px;
+	box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+	background: #fac031;
+	border-radius: 15px;
 }
 </style>
-</head>
 <body>
-	<header>
-		<div class="logo">
-			<img alt="Easy-Recipe Logo"
-				src="data:image/jpeg;base64,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">
-			<h1>Easy Recipe</h1>
-		</div>
+
+	<section id="Home">
 		<nav>
-			<a href="RecipeList">Recipes</a> <a href="#about">About</a> <a
-				href="#contact">Contact</a>
+			<div class=" logo">
+				<img src=".\Image\logo.png">
+
+			</div>
+
+			<ul>
+				<li><a href="#Home">Home</a></li>
+				<li><a href="#About">About</a></li>
+				<li><a href="RecipeList">Recipes</a></li>
+				<li><a href="gallery">Gallery</a></li>
+				<li><a href="#Review">Review</a></li>
+			</ul>
+
+			<div class="icon">
+				<i class="fa-solid fa-heart"></i>
+			</div>
+
 		</nav>
-	</header>
 
-	<main>
-		<div class="wrapper">
-			<div class="content">
-				<h1 class="my-head">The Easiest Way To Make Your Favorite
-					Meal...</h1>
+		<div class="main">
+			<div class="men_text">
+				<h1>
+					Get Fresh <span>Food Recipes</span><br>in an Easy Way
+				</h1>
+
 			</div>
-			<div class="btn">
-				<a href="RecipeList" class="my-btn">Explore Recipes...</a>
+
+			<div class="main_image">
+				<img src=".\Image\main_img.jpg">
+			</div>
+
+		</div>
+
+		<p>"Welcome to EasyRecipe - Where Culinary Creativity Meets
+			Simplicity! Explore a world of delectable delights with our
+			collection of easy-to-follow recipes. From quick weeknight meals to
+			impressive dinner party dishes, EasyRecipe is your go-to destination
+			for culinary inspiration. Start cooking up delicious memories today!"</p>
+
+		<div class="main_btn">
+			<a href="RecipeList">Recipes</a> <i class="fa-solid fa-angle-right"></i>
+		</div>
+
+	</section>
+
+
+	<div class="about" id="About">
+		<div class="about_main">
+			<div class="image">
+				<img src="Image/Food-plate.jpg">
+			</div>
+
+			<div class="about_text">
+				<h1>
+					<span>About</span>Us
+				</h1>
+				<h3>Why Choose Us?</h3>
+				<p>"At EasyRecipe, we're passionate about making cooking fun,
+					accessible, and rewarding for everyone. Our mission is simple: to
+					empower home cooks with easy-to-follow recipes and helpful tips, so
+					they can unleash their inner chef and create culinary masterpieces
+					with confidence. Join us on this delicious journey!"</p>
 			</div>
 		</div>
 
-	</main>
+		<a href="RecipeList" class="about_btn">Recipes</a>
+	</div>
+
+
+	<div class="review" id="Review">
+		<h1>
+			Customer <span>Review</span>
+		</h1>
+
+		<div class="review_box">
+			<div class="review_card">
+
+				<div class="review_profile">
+					<img src="Image/review1.avif">
+				</div>
+
+				<div class="review_text">
+					<h2 class="name">Aastha Sharma</h2>
+
+					<div class="review_icon">
+						<i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
+						<i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
+						<i class="fa-solid fa-star-half-stroke"></i>
+					</div>
+
+					<div class="review_social">
+						<a href="www.facebook.com/aastha.user"><i class="fa-brands fa-facebook-f"></i></a> 
+						 <a href=" www.instagram.com/aastha.user"><i class="fa-brands fa-instagram"></i></a>
+						 <a href=" www.linkedin.com/in/aastha-user"><i class="fa-brands fa-linkedin-in"></i></a>
+					</div>
+
+					<p>"As a busy mom, EasyRecipe has been a lifesaver! Their quick
+						and delicious meal ideas have made dinner time stress-free and
+						enjoyable for the whole family."</p>
+
+				</div>
+
+			</div>
+
+
+			<div class="review_card">
+
+				<div class="review_profile">
+					<img src="Image/review2.jpg">
+				</div>
+
+				<div class="review_text">
+					<h2 class="name">Vijay</h2>
+
+					<div class="review_icon">
+						<i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
+						<i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
+						<i class="fa-solid fa-star-half-stroke"></i>
+					</div>
+
+					<div class="review_social">
+						<a href=" www.facebook.com/vijay.user"><i class="fa-brands fa-facebook-f"></i></a> 
+						 <a href=" www.instagram.com/vijay.user"><i class="fa-brands fa-instagram"></i></a>
+						 <a href="www.linkedin.com/in/vijay-user"><i class="fa-brands fa-linkedin-in"></i></a>
+					</div>
+
+					<p>"EasyRecipe has revolutionized my cooking routine! Their
+						recipes are simple to follow yet yield restaurant-quality results.
+						I'm hooked!"</p>
+
+				</div>
+
+			</div>
+
+
+			<div class="review_card">
+
+				<div class="review_profile">
+					<img src="Image/review3.jpg">
+				</div>
+
+				<div class="review_text">
+					<h2 class="name">Aashish Tamang</h2>
+
+					<div class="review_icon">
+						<i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
+						<i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
+						<i class="fa-solid fa-star-half-stroke"></i>
+					</div>
+
+					<div class="review_social">
+						<a href=" www.facebook.com/aashish.user"><i class="fa-brands fa-facebook-f"></i></a> 
+						 <a href=" www.instagram.com/aashish.user"><i class="fa-brands fa-instagram"></i></a>
+						 <a href=" www.linkedin.com/in/aashish-user"><i class="fa-brands fa-linkedin-in"></i></a>
+					</div>
+
+					<p>"I've never been much of a cook, but EasyRecipe has changed
+						that! Their user-friendly website and mouthwatering recipes have
+						turned me into a kitchen hero among my friends and family."</p>
+
+				</div>
+
+			</div>
+
+
+			<div class="review_card">
+
+				<div class="review_profile">
+					<img src="Image/review4.jpg">
+				</div>
+
+				<div class="review_text">
+					<h2 class="name">Sweta</h2>
+
+					<div class="review_icon">
+						<i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
+						<i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
+						<i class="fa-solid fa-star-half-stroke"></i>
+					</div>
+
+					<div class="review_social">
+						<a href="www.facebook.com/sweta.user"><i class="fa-brands fa-facebook-f"></i></a> 
+						 <a href=" www.instagram.com/sweta.user"><i class="fa-brands fa-instagram"></i></a>
+						 <a href=" www.linkedin.com/in/sweta-user"><i class="fa-brands fa-linkedin-in"></i></a>
+					</div>
+
+					<p>"EasyRecipe makes cooking a breeze! Their recipes are
+						foolproof and absolutely delicious. Highly recommend!"</p>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<div class="team">
+		<h1>
+			Our <span>Team</span>
+		</h1>
+
+		<div class="team_box">
+			<div class="profile">
+
+				<img src="Image/chef1.avif">
+
+				<div class="info">
+					<h2 class="name">Chef David</h2>
+					<p class="bio">"Savory Sensation Specialist"</p>
+
+					<div class="team_icon">
+						<a href=" www.facebook.com/alex_cuisine"><i class="fa-brands fa-facebook-f"></i></a> 
+						<a href="www.twitter.com/alex_cuisine"><i class="fa-brands fa-twitter"></i></a>
+						 <a href="www.instagram.com/alex_cuisine"><i class="fa-brands fa-instagram"></i></a>
+					</div>
+
+				</div>
+			</div>
+
+
+			<div class="profile">
+
+				<img src="Image/chef2.avif">
+
+				<div class="info">
+					<h2 class="name">Chef Sofia</h2>
+					<p class="bio">"Culinary Innovator & Fusion Queen"</p>
+
+					<div class="team_icon">
+						<a href="www.facebook.com/sophia_fusionqueen"><i class="fa-brands fa-facebook-f"></i></a> 
+						<a href="www.twitter.com/sophia_fusion"><i class="fa-brands fa-twitter"></i></a>
+						 <a href="www.instagram.com/sophia_fusionqueen"><i class="fa-brands fa-instagram"></i></a>
+					</div>
+
+
+				</div>
+			</div>
+
+
+			<div class="profile">
+
+				<img src="Image/chef3.jpg">
+
+				<div class="info">
+					<h2 class="name">Chef Jessica</h2>
+					<p class="bio">"Master of Bakking Delights"</p>
+
+					<div class="team_icon">
+						<a href="www.facebook.com/emilychef"><i class="fa-brands fa-facebook-f"></i></a> 
+						<a href="www.twitter.com/emilychef"><i class="fa-brands fa-twitter"></i></a>
+						 <a href=" www.instagram.com/emilychef"><i class="fa-brands fa-instagram"></i></a>
+					</div>
+
+
+				</div>
+			</div>
+
+
+
+
+			<div class="profile">
+
+				<img src="Image/chef4.avif">
+
+				<div class="info">
+					<h2 class="name">Chef Sujan</h2>
+					<p class="bio">"Grill Master Extraordinaire"</p>
+
+					<div class="team_icon">
+						<a href="www.facebook.com/michael_grillmaster"><i class="fa-brands fa-facebook-f"></i></a> 
+						<a href="www.twitter.com/michael_grill"><i class="fa-brands fa-twitter"></i></a>
+						 <a href="www.instagram.com/michael_grillmaster"><i class="fa-brands fa-instagram"></i></a>
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
 	<footer>
-		<div class="section">
-			<section id="contact">
-				<h2>Contact Us</h2>
-				<p>Email: easyrecipe@example.com</p>
-				<p>Phone: 9857666433</p>
-			</section>
+		<div class="footer_main">
 
-			<section id="about">
-				<h2>About Us</h2>
 
-				<p>This is our About section. We are...</p>
-			</section>
+			<div class="footer_tag">
+
+				<h2>Quick Link</h2>
+				<p>
+					<a href="#Home">Home</a>
+				</p>
+				<p>
+					<a href="#About">About</a>
+				</p>
+				<p>
+					<a href="RecipeList">Recipes</a>
+				</p>
+				<p>
+					<a href="gallery">Gallery</a>
+				</p>
+				<p>
+					<a href="#Review">Review</a>
+				</p>
+			</div>
+
+
+			<div class="footer_tag">
+
+				<h2>Contact</h2>
+				<p>+977 9856555644</p>
+				<p>+977 9887555766</p>
+				<p>easyrecipe3@gmail.com</p>
+				<p>easycooking2@gmail.com</p>
+			</div>
+
+			<div class="footer_tag">
+
+				<h2>Our Services</h2>
+				<p>Easy Instructions</p>
+				<p>Search By Ingredients</p>
+				<p>Instructional videos</p>
+			</div>
+
+			<div class="footer_tag">
+
+				<h2>Follow Us</h2>
+					<a href=" www.facebook.com/easyrecipe"><i class="fa-brands fa-facebook-f"></i></a> 
+					<a href=" www.instagram.com/easyrecipe"><i class="fa-brands fa-instagram"></i></a>
+					<a href=" www.twitter.com/easyrecipe"><i class="fa-brands fa-twitter"></i></a>
+					<a href="www.youtube.com/easyrecipe"><i class="fa-brands fa-youtube"></i></a>
+					<a href="https://github.com/Ad-Manisha/easy-recipe-web-app"><i class="fa-brands fa-github"></i></a>
+					
+			</div>
 
 		</div>
-
-
-		<div class="copyright">&copy; 2024 EasyRecipe. All rights
-			reserved.</div>
-
 	</footer>
-
-</body>
-</html>
